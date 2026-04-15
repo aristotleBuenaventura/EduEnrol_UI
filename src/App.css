@@ -1,0 +1,185 @@
+.login-page {
+  width: min(1040px, 100%);
+  display: grid;
+  grid-template-columns: 1.2fr 0.95fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.brand-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.brand-header {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.brand-icon {
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 0.65rem;
+  background: #0b8579;
+  color: #ffffff;
+  display: grid;
+  place-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.brand-header h1 {
+  margin: 0;
+  color: #26302f;
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.brand-header p {
+  margin: 0.15rem 0 0;
+  color: #7f8b89;
+  font-size: 0.92rem;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.feature-item {
+  background: #ffffff;
+  border: 1px solid #e4eaeb;
+  border-radius: 0.75rem;
+  padding: 0.95rem 1rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.feature-item h3 {
+  margin: 0;
+  color: #2f3a38;
+  font-size: 0.95rem;
+}
+
+.feature-item p {
+  margin: 0.35rem 0 0;
+  color: #6d7a78;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.feature-icon {
+  width: 0.78rem;
+  height: 0.78rem;
+  border-radius: 999px;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.feature-icon.enrollment {
+  background: #f9ae4b;
+}
+
+.feature-icon.workflow {
+  background: #5f9dfa;
+}
+
+.feature-icon.support {
+  background: #2ebd95;
+}
+
+.ui-card {
+  background: #ffffff;
+  border: 1px solid #e8eded;
+  border-radius: 0.75rem;
+  padding: 2rem 1.75rem;
+  box-shadow: 0 8px 24px rgba(14, 56, 52, 0.08);
+}
+
+.login-card h2 {
+  margin: 0;
+  color: #283331;
+  text-align: center;
+  font-size: 1.7rem;
+}
+
+.card-subtitle {
+  margin: 0.35rem 0 1.4rem;
+  text-align: center;
+  color: #7d8785;
+  font-size: 0.9rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.input-field label {
+  color: #334140;
+  font-size: 0.87rem;
+  font-weight: 500;
+}
+
+.input-field input {
+  width: 100%;
+  border: 1px solid #dce3e2;
+  border-radius: 0.5rem;
+  padding: 0.66rem 0.75rem;
+  color: #24302e;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-field input::placeholder {
+  color: #9aa5a4;
+}
+
+.input-field input:focus {
+  border-color: #0b8579;
+  box-shadow: 0 0 0 3px rgba(11, 133, 121, 0.14);
+}
+
+.ui-button {
+  margin-top: 0.35rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.72rem 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: #0b8579;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ui-button:hover {
+  background: #096f65;
+}
+
+@media (max-width: 960px) {
+  .login-page {
+    grid-template-columns: 1fr;
+    width: min(560px, 100%);
+    gap: 1.3rem;
+  }
+
+  .brand-header h1 {
+    font-size: 1.45rem;
+  }
+
+  .ui-card {
+    padding: 1.6rem 1.3rem;
+  }
+}
