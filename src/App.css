@@ -168,6 +168,16 @@
   background: #096f65;
 }
 
+.ui-button.secondary {
+  background: transparent;
+  color: #0b8579;
+  border: 1px solid #b9d7d3;
+}
+
+.ui-button.secondary:hover {
+  background: #eef8f7;
+}
+
 @media (max-width: 960px) {
   .login-page {
     grid-template-columns: 1fr;

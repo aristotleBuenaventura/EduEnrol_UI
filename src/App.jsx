@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Button from './components/ui/Button'
 import Card from './components/ui/Card'
 import FeatureItem from './components/ui/FeatureItem'
@@ -5,6 +6,13 @@ import InputField from './components/ui/InputField'
 import './App.css'
 
 function App() {
+  const [isSignUp, setIsSignUp] = useState(false)
+
+  const cardTitle = isSignUp ? 'Create Account' : 'Welcome Back'
+  const cardSubtitle = isSignUp
+    ? 'Fill in your details to create a new account'
+    : 'Sign in to your account to continue'
+
   return (
     <main className="login-page">
       <section className="brand-panel">
@@ -38,10 +46,18 @@ function App() {
       </section>
 
       <Card className="login-card">
-        <h2>Welcome Back</h2>
-        <p className="card-subtitle">Sign in to your account to continue</p>
+        <h2>{cardTitle}</h2>
+        <p className="card-subtitle">{cardSubtitle}</p>
 
-        <form className="login-form">
+        <form className="login-form" onSubmit={(event) => event.preventDefault()}>
+          {isSignUp && (
+            <InputField
+              id="name"
+              label="Name"
+              placeholder="Enter your name"
+              type="text"
+            />
+          )}
           <InputField
             id="email"
             label="Email"
@@ -54,7 +70,23 @@ function App() {
             placeholder="Enter your password"
             type="password"
           />
-          <Button type="submit">Sign In</Button>
+          {isSignUp && (
+            <InputField
+              id="confirmPassword"
+              label="Confirm Password"
+              placeholder="Confirm your password"
+              type="password"
+            />
+          )}
+
+          <Button type="submit">{isSignUp ? 'Create Account' : 'Sign In'}</Button>
+          <Button
+            type="button"
+            className="secondary"
+            onClick={() => setIsSignUp((previousState) => !previousState)}
+          >
+            {isSignUp ? 'Back to Sign In' : 'Sign Up'}
+          </Button>
         </form>
       </Card>
     </main>
