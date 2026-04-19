@@ -1,13 +1,14 @@
 /**
  * @param {object} props
  * @param {React.ReactNode} props.icon
+ * @param {string} [props.title]
  * @param {string} props.body
  * @param {string} props.actionLabel
  * @param {string} [props.actionHref]
  * @param {() => void} [props.onAction]
  * @param {'info' | 'documents'} [props.variant]
  */
-function InfoActionCard({ icon, body, actionLabel, actionHref, onAction, variant = 'info' }) {
+function InfoActionCard({ icon, title, body, actionLabel, actionHref, onAction, variant = 'info' }) {
   const className = ['info-action-card', `variant-${variant}`].join(' ')
 
   const content = (
@@ -15,6 +16,7 @@ function InfoActionCard({ icon, body, actionLabel, actionHref, onAction, variant
       <div className="info-action-card__icon" aria-hidden="true">
         {icon}
       </div>
+      {title ? <h3 className="info-action-card__title">{title}</h3> : null}
       <p className="info-action-card__body">{body}</p>
       {actionHref ? (
         <a href={actionHref} className="info-action-card__btn">

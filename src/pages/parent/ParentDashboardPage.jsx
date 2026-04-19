@@ -69,6 +69,7 @@ function ParentDashboardPage() {
           <InfoActionCard
             key={card.id}
             variant={card.variant}
+            title={card.title}
             body={card.body}
             actionLabel={card.actionLabel}
             actionHref={card.actionHref}

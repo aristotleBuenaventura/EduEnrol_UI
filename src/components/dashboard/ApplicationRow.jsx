@@ -35,11 +35,19 @@ function ApplicationRow({
           {referenceCode} <span aria-hidden="true">•</span> {yearLevel}
         </p>
         <p className="application-row__hint">{hint}</p>
-        <div className="application-row__progress" role="progressbar" aria-valuenow={clamped} aria-valuemin={0} aria-valuemax={100}>
+        <div
+          className="application-row__progress-block"
+          role="progressbar"
+          aria-valuenow={clamped}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label={`Application progress ${clamped}%`}
+        >
+          <span className="application-row__progress-label application-row__progress-label--left">Progress</span>
           <div className="application-row__progress-track">
             <div className="application-row__progress-fill" style={{ width: `${clamped}%` }} />
           </div>
-          <span className="application-row__progress-label">{clamped}%</span>
+          <span className="application-row__progress-label application-row__progress-label--right">{clamped}%</span>
         </div>
       </div>
       <div className="application-row__action">

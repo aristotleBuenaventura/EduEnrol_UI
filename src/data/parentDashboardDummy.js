@@ -25,7 +25,7 @@ export const parentApplicationsPreview = [
     status: 'draft',
     statusLabel: 'Draft',
     hint: 'Continue your application to submit',
-    progressPercent: 28,
+    progressPercent: 29,
     continueHref: '/parent/enrol-student',
   },
 ]
@@ -34,7 +34,7 @@ export const parentHelpCards = [
   {
     id: 'help-team',
     variant: 'info',
-    title: null,
+    title: 'Need Help?',
     body: 'Our enrolment team is here to assist you with any questions.',
     actionLabel: 'Contact School',
     actionHref: '#',
@@ -42,7 +42,7 @@ export const parentHelpCards = [
   {
     id: 'help-docs',
     variant: 'documents',
-    title: null,
+    title: 'Required Documents',
     body: 'Make sure you have birth certificate and proof of address ready.',
     actionLabel: 'View Checklist',
     actionHref: '#',

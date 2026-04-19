@@ -1,15 +1,16 @@
 /* Shared layout for Parent (and future role shells using the same components) */
 
 .parent-app-shell {
-  --sidebar-teal: #134e4a;
-  --sidebar-teal-hover: #115a52;
-  --sidebar-active: rgba(255, 255, 255, 0.14);
+  /* Aligned to EduEnroll dashboard reference */
+  --sidebar-teal: #106e5e;
+  --sidebar-teal-hover: #0d5d50;
+  --sidebar-active: #147a65;
   --sidebar-pill-bg: #ffffff;
-  --sidebar-text: #ecfdf5;
-  --sidebar-muted: rgba(236, 253, 245, 0.72);
-  --accent-teal: #0f766e;
-  --accent-teal-dark: #0d5c56;
-  --page-bg: #eef2f2;
+  --sidebar-text: #f0fdf9;
+  --sidebar-muted: rgba(240, 253, 249, 0.72);
+  --accent-teal: #106e5e;
+  --accent-teal-dark: #0d5d50;
+  --page-bg: #f9fafb;
 
   display: flex;
   min-height: 100vh;
@@ -28,7 +29,8 @@
 .parent-app-shell__scroll {
   flex: 1;
   overflow: auto;
-  padding: 1.5rem 1.75rem 2rem;
+  padding: 32px clamp(24px, 4vw, 48px) 40px;
+  background: var(--page-bg);
 }
 
 /* ---- Sidebar ---- */
@@ -38,10 +40,10 @@
   color: var(--sidebar-text);
   display: flex;
   flex-direction: column;
-  width: 268px;
+  width: clamp(252px, 19vw, 300px);
   flex-shrink: 0;
   min-height: 100vh;
-  padding: 1rem 0.85rem 1rem;
+  padding: 20px 12px 20px;
   transition: width 0.22s ease, padding 0.22s ease;
 }
 
@@ -81,7 +83,7 @@
 }
 
 .app-sidebar__toggle-chevron {
-  color: var(--sidebar-teal);
+  color: var(--accent-teal);
 }
 
 .app-sidebar__header-row {
@@ -139,32 +141,33 @@
 }
 
 .app-sidebar__role-pill {
-  font-size: 0.78rem;
-  padding: 0.45rem 0.65rem;
-  border-radius: 0.5rem;
-  background: rgba(0, 0, 0, 0.18);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.16);
   color: var(--sidebar-muted);
-  margin-bottom: 1rem;
+  margin-bottom: 18px;
 }
 
 .app-sidebar__nav ul {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 8px;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 4px;
 }
 
 .app-sidebar__link {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.62rem 0.75rem;
-  border-radius: 0.55rem;
+  gap: 10px;
+  padding: 11px 12px;
+  border-radius: 10px;
   color: var(--sidebar-text);
   text-decoration: none;
-  font-size: 0.92rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   transition: background 0.15s ease, color 0.15s ease;
 }
@@ -271,26 +274,29 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.85rem 1.5rem;
+  padding: 16px clamp(24px, 4vw, 48px);
   background: #ffffff;
-  border-bottom: 1px solid #e2e8e8;
+  border-bottom: 1px solid #e5e7eb;
   flex-shrink: 0;
 }
 
 .app-topbar__search {
-  flex: 1;
-  max-width: 420px;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: min(560px, 100%);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: #f4f7f7;
-  border-radius: 999px;
-  padding: 0.45rem 0.85rem;
+  gap: 10px;
+  background: #f3f4f6;
+  border-radius: 9999px;
+  padding: 10px 18px;
+  min-height: 44px;
+  box-sizing: border-box;
   border: 1px solid transparent;
 }
 
 .app-topbar__search:focus-within {
-  border-color: rgba(15, 118, 110, 0.35);
+  border-color: rgba(16, 110, 94, 0.25);
   background: #fff;
 }
 
@@ -316,7 +322,7 @@
 .app-topbar__actions {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 4px;
 }
 
 .app-topbar__icon-btn {
@@ -332,8 +338,8 @@
 }
 
 .app-topbar__icon-btn:hover {
-  background: #f1f5f5;
-  color: #0f766e;
+  background: #f3f4f6;
+  color: var(--accent-teal);
 }
 
 .app-topbar__badge {
@@ -353,6 +359,12 @@
 }
 
 @media (max-width: 720px) {
+  .app-topbar__search {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: none;
+  }
+
   .parent-app-shell {
     flex-direction: column;
   }
