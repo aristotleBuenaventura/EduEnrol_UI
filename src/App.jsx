@@ -1,95 +1,22 @@
-import { useState } from 'react'
-import Button from './components/ui/Button'
-import Card from './components/ui/Card'
-import FeatureItem from './components/ui/FeatureItem'
-import InputField from './components/ui/InputField'
-import './App.css'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import LoginPage from './pages/LoginPage.jsx'
+import ParentLayout from './pages/parent/ParentLayout.jsx'
+import ParentDashboardPage from './pages/parent/ParentDashboardPage.jsx'
+import ParentSectionPlaceholder from './pages/parent/ParentSectionPlaceholder.jsx'
 
 function App() {
-  const [isSignUp, setIsSignUp] = useState(false)
-
-  const cardTitle = isSignUp ? 'Create Account' : 'Welcome Back'
-  const cardSubtitle = isSignUp
-    ? 'Fill in your details to create a new account'
-    : 'Sign in to your account to continue'
-
   return (
-    <main className="login-page">
-      <section className="brand-panel">
-        <header className="brand-header">
-          <span className="brand-icon" aria-hidden="true">
-            E
-          </span>
-          <div>
-            <h1>EduEnroll NZ</h1>
-            <p>Digital Student Enrolment Platform</p>
-          </div>
-        </header>
-
-        <div className="feature-list">
-          <FeatureItem
-            iconClassName="feature-icon enrollment"
-            title="Streamlined Enrolments"
-            description="Replace paper forms with a secure online enrolment system designed for New Zealand schools."
-          />
-          <FeatureItem
-            iconClassName="feature-icon workflow"
-            title="Automated Workflows"
-            description="From submission to approval, track every step of the enrolment journey."
-          />
-          <FeatureItem
-            iconClassName="feature-icon support"
-            title="Multilingual Support"
-            description="Available in English, Te Reo Maori, and Mandarin Chinese."
-          />
-        </div>
-      </section>
-
-      <Card className="login-card">
-        <h2>{cardTitle}</h2>
-        <p className="card-subtitle">{cardSubtitle}</p>
-
-        <form className="login-form" onSubmit={(event) => event.preventDefault()}>
-          {isSignUp && (
-            <InputField
-              id="name"
-              label="Name"
-              placeholder="Enter your name"
-              type="text"
-            />
-          )}
-          <InputField
-            id="email"
-            label="Email"
-            placeholder="Enter your email"
-            type="email"
-          />
-          <InputField
-            id="password"
-            label="Password"
-            placeholder="Enter your password"
-            type="password"
-          />
-          {isSignUp && (
-            <InputField
-              id="confirmPassword"
-              label="Confirm Password"
-              placeholder="Confirm your password"
-              type="password"
-            />
-          )}
-
-          <Button type="submit">{isSignUp ? 'Create Account' : 'Sign In'}</Button>
-          <Button
-            type="button"
-            className="secondary"
-            onClick={() => setIsSignUp((previousState) => !previousState)}
-          >
-            {isSignUp ? 'Back to Sign In' : 'Sign Up'}
-          </Button>
-        </form>
-      </Card>
-    </main>
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/parent" element={<ParentLayout />}>
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<ParentDashboardPage />} />
+        <Route path="enrol-student" element={<ParentSectionPlaceholder />} />
+        <Route path="applications" element={<ParentSectionPlaceholder />} />
+        <Route path="notifications" element={<ParentSectionPlaceholder />} />
+      </Route>
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   )
 }
 
