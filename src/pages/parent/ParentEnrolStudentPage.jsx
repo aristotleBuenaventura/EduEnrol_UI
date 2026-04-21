@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo, useState } from 'react'
 import CaregiverInformationStep from '../../components/enrolment/CaregiverInformationStep.jsx'
 import { initialCaregiverDetails } from '../../components/enrolment/caregiverDetailsDefaults.js'
 import StudentDetailsStep from '../../components/enrolment/StudentDetailsStep.jsx'
@@ -7,7 +7,6 @@ import {
   IconArrowRight,
   IconCheck,
   IconChevronLeft,
-  IconChevronRight,
   IconSave,
 } from '../../components/icons/NavIcons.jsx'
 import {
@@ -37,46 +36,6 @@ function ParentEnrolStudentPage() {
   const [caregiverDetails, setCaregiverDetails] = useState(initialCaregiverDetails)
   const [yearLevelOptions, _setYearLevelOptions] = useState(() => [...defaultYearLevelOptions])
   const [relationshipOptions, _setCaregiverRelationshipOptions] = useState(() => [...defaultCaregiverRelationshipOptions])
-
-  const tabsScrollRef = useRef(null)
-  const [tabsScrollState, setTabsScrollState] = useState({
-    overflow: false,
-    canLeft: false,
-    canRight: false,
-  })
-
-  const updateTabsScroll = useCallback(() => {
-    const el = tabsScrollRef.current
-    if (!el) return
-    const { scrollLeft, scrollWidth, clientWidth } = el
-    const overflow = scrollWidth > clientWidth + 2
-    setTabsScrollState({
-      overflow,
-      canLeft: scrollLeft > 4,
-      canRight: scrollLeft + clientWidth < scrollWidth - 4,
-    })
-  }, [])
-
-  useEffect(() => {
-    updateTabsScroll()
-    const el = tabsScrollRef.current
-    if (!el) return undefined
-    el.addEventListener('scroll', updateTabsScroll, { passive: true })
-    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(updateTabsScroll) : null
-    ro?.observe(el)
-    window.addEventListener('resize', updateTabsScroll)
-    return () => {
-      el.removeEventListener('scroll', updateTabsScroll)
-      ro?.disconnect()
-      window.removeEventListener('resize', updateTabsScroll)
-    }
-  }, [updateTabsScroll, stepIndex])
-
-  const scrollTabs = (direction) => {
-    const el = tabsScrollRef.current
-    if (!el) return
-    el.scrollBy({ left: direction * 240, behavior: 'smooth' })
-  }
 
   const totalSteps = enrolmentWizardSteps.length
   const currentStep = enrolmentWizardSteps[stepIndex]
@@ -146,48 +105,23 @@ function ParentEnrolStudentPage() {
         </div>
       </header>
 
-      <div className="parent-enrol__tabs-outer">
-        {tabsScrollState.overflow ? (
-          <button
-            type="button"
-            className="parent-enrol__tabs-arrow"
-            aria-label="Scroll steps left"
-            disabled={!tabsScrollState.canLeft}
-            onClick={() => scrollTabs(-1)}
-          >
-            <IconChevronLeft width={20} height={20} />
-          </button>
-        ) : null}
-        <div className="parent-enrol__tabs-scroll" ref={tabsScrollRef}>
-          <nav className="parent-enrol__tabs" aria-label="Enrolment steps">
-            {enrolmentWizardSteps.map((s, i) => (
-              <button
-                key={s.id}
-                type="button"
-                className={`parent-enrol__tab${i === stepIndex ? ' is-active' : ''}${i < stepIndex ? ' is-done' : ''}`}
-                onClick={() => setStepIndex(i)}
-              >
-                {i < stepIndex ? (
-                  <span className="parent-enrol__tab-check">
-                    <IconCheck width={16} height={16} />
-                  </span>
-                ) : null}
-                {s.label}
-              </button>
-            ))}
-          </nav>
-        </div>
-        {tabsScrollState.overflow ? (
-          <button
-            type="button"
-            className="parent-enrol__tabs-arrow"
-            aria-label="Scroll steps right"
-            disabled={!tabsScrollState.canRight}
-            onClick={() => scrollTabs(1)}
-          >
-            <IconChevronRight width={20} height={20} />
-          </button>
-        ) : null}
+      <div className="parent-enrol__tabs-scroll">
+        <ol className="parent-enrol__tabs" aria-label="Enrolment steps">
+          {enrolmentWizardSteps.map((s, i) => (
+            <li
+              key={s.id}
+              className={`parent-enrol__tab${i === stepIndex ? ' is-active' : ''}${i < stepIndex ? ' is-done' : ''}`}
+              aria-current={i === stepIndex ? 'step' : undefined}
+            >
+              {i < stepIndex ? (
+                <span className="parent-enrol__tab-check" aria-hidden="true">
+                  <IconCheck width={16} height={16} />
+                </span>
+              ) : null}
+              {s.label}
+            </li>
+          ))}
+        </ol>
       </div>
 
       <div className="parent-enrol__card">{stepBody}</div>
