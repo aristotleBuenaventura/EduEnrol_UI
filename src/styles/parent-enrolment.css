@@ -1,0 +1,496 @@
+/* Parent — Enrolment Application wizard */
+
+.parent-enrol {
+  --enrol-teal: #106e5e;
+  --enrol-teal-hover: #0d5d50;
+  --enrol-text: #111827;
+  --enrol-muted: #6b7280;
+  --enrol-border: #e5e7eb;
+  --enrol-bg: #f9fafb;
+  --enrol-card: #ffffff;
+  --enrol-radius: 12px;
+  --enrol-radius-input: 10px;
+  --enrol-required: #dc2626;
+  --enrol-success: #059669;
+  --enrol-success-muted: #d1fae5;
+  --enrol-orange-hover-bg: #fff7ed;
+  --enrol-orange-hover-border: #fb923c;
+  --enrol-orange-hover-text: #9a3412;
+
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.parent-enrol__header {
+  margin-bottom: 1.25rem;
+}
+
+.parent-enrol__title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--enrol-text);
+  letter-spacing: -0.02em;
+}
+
+.parent-enrol__subtitle {
+  margin: 0.35rem 0 0;
+  font-size: 0.9375rem;
+  color: var(--enrol-muted);
+}
+
+/* Step label (left) + auto-save (right) — same row as screenshot */
+.parent-enrol__meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.parent-enrol__step-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--enrol-muted);
+}
+
+.parent-enrol__autosave {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--enrol-success);
+  white-space: nowrap;
+}
+
+.parent-enrol__autosave-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--enrol-success);
+}
+
+/* Full-width bar directly under meta row */
+.parent-enrol__progress-track {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.parent-enrol__progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--enrol-teal);
+  transition: width 0.2s ease;
+}
+
+.parent-enrol__tabs-outer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 1.25rem;
+  min-width: 0;
+}
+
+.parent-enrol__tabs-arrow {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--enrol-border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--enrol-muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.parent-enrol__tabs-arrow:hover:not(:disabled) {
+  background: #f3f4f6;
+  color: var(--enrol-teal);
+  border-color: #d1d5db;
+}
+
+.parent-enrol__tabs-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.parent-enrol__tabs-scroll {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+  padding-bottom: 2px;
+}
+
+.parent-enrol__tabs-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.parent-enrol__tabs-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+.parent-enrol__tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  width: max-content;
+  padding: 2px 0;
+}
+
+.parent-enrol__tab {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  color: var(--enrol-text);
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.parent-enrol__tab:hover {
+  background: #d1d5db;
+}
+
+.parent-enrol__tab.is-active {
+  background: var(--enrol-teal);
+  color: #fff;
+}
+
+.parent-enrol__tab.is-done:not(.is-active) {
+  background: var(--enrol-success-muted);
+  color: #065f46;
+}
+
+.parent-enrol__tab-check {
+  display: grid;
+  place-items: center;
+  color: var(--enrol-success);
+}
+
+.parent-enrol__card {
+  background: var(--enrol-card);
+  border: 1px solid var(--enrol-border);
+  border-radius: var(--enrol-radius);
+  padding: 28px clamp(20px, 3vw, 32px) 32px;
+  margin-bottom: 1.5rem;
+}
+
+.parent-enrol__section-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--enrol-text);
+}
+
+.parent-enrol__section-desc {
+  margin: 0.35rem 0 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--enrol-muted);
+}
+
+.parent-enrol__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.parent-enrol__field-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--enrol-text);
+  margin-bottom: 0.45rem;
+}
+
+.parent-enrol__required {
+  color: var(--enrol-required);
+  font-weight: 700;
+}
+
+.parent-enrol__input,
+.parent-enrol__select {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  padding: 12px 14px;
+  border: 1px solid var(--enrol-border);
+  border-radius: var(--enrol-radius-input);
+  background: #fff;
+  color: var(--enrol-text);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.parent-enrol__input:focus,
+.parent-enrol__select:focus {
+  border-color: rgba(16, 110, 94, 0.45);
+  box-shadow: 0 0 0 3px rgba(16, 110, 94, 0.12);
+}
+
+.parent-enrol__input::placeholder {
+  color: #9ca3af;
+}
+
+.parent-enrol__select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+.parent-enrol__date-wrap {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.parent-enrol__date-wrap .parent-enrol__input {
+  flex: 1;
+  min-width: 0;
+  padding-right: 48px;
+}
+
+.parent-enrol__date-btn {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--enrol-muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.parent-enrol__date-btn:hover {
+  background: #f3f4f6;
+  color: var(--enrol-teal);
+}
+
+.parent-enrol__radio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.parent-enrol__radio-option {
+  position: relative;
+}
+
+.parent-enrol__radio-option input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.parent-enrol__radio-pill {
+  display: block;
+  padding: 12px 14px;
+  border-radius: var(--enrol-radius-input);
+  border: 1px solid var(--enrol-border);
+  background: #fff;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--enrol-text);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.parent-enrol__radio-option input:focus-visible + .parent-enrol__radio-pill {
+  outline: 2px solid var(--enrol-teal);
+  outline-offset: 2px;
+}
+
+.parent-enrol__radio-option input:checked + .parent-enrol__radio-pill {
+  border-color: var(--enrol-teal);
+  background: rgba(16, 110, 94, 0.08);
+  box-shadow: inset 0 0 0 1px var(--enrol-teal);
+}
+
+.parent-enrol__radio-option:hover .parent-enrol__radio-pill {
+  border-color: #cbd5e1;
+}
+
+/* Caregiver — Yes / No wide toggles */
+.parent-enrol__yn-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.parent-enrol__yn-btn {
+  min-height: 48px;
+  padding: 12px 16px;
+  border-radius: var(--enrol-radius-input);
+  border: 1px solid var(--enrol-border);
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--enrol-text);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.parent-enrol__yn-btn:hover:not(.is-selected) {
+  background: var(--enrol-orange-hover-bg);
+  border-color: var(--enrol-orange-hover-border);
+  color: var(--enrol-orange-hover-text);
+}
+
+.parent-enrol__yn-btn.is-selected {
+  background: var(--enrol-teal);
+  border-color: var(--enrol-teal);
+  color: #fff;
+  box-shadow: none;
+}
+
+.parent-enrol__yn-btn.is-selected:hover {
+  background: var(--enrol-teal-hover);
+  border-color: var(--enrol-teal-hover);
+  color: #fff;
+}
+
+.parent-enrol__yn-btn:focus-visible {
+  outline: 2px solid var(--enrol-teal);
+  outline-offset: 2px;
+}
+
+.parent-enrol__placeholder-step {
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--enrol-muted);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.parent-enrol__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 0.5rem;
+}
+
+.parent-enrol__footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.parent-enrol__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.parent-enrol__btn--back {
+  background: #e5e7eb;
+  color: var(--enrol-text);
+  border-color: #e5e7eb;
+}
+
+.parent-enrol__btn--back:hover:not(:disabled) {
+  background: #d1d5db;
+}
+
+.parent-enrol__btn--back:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.parent-enrol__btn--ghost {
+  background: #fff;
+  color: var(--enrol-text);
+  border-color: var(--enrol-border);
+}
+
+.parent-enrol__btn--ghost:hover {
+  background: #f9fafb;
+  border-color: #cbd5e1;
+}
+
+.parent-enrol__btn--primary {
+  background: var(--enrol-teal);
+  color: #fff;
+  border-color: var(--enrol-teal);
+}
+
+.parent-enrol__btn--primary:hover {
+  background: var(--enrol-teal-hover);
+  border-color: var(--enrol-teal-hover);
+}
+
+@media (max-width: 560px) {
+  .parent-enrol__meta-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .parent-enrol__autosave {
+    white-space: normal;
+  }
+
+  .parent-enrol__footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .parent-enrol__footer-actions {
+    margin-left: 0;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .parent-enrol__footer-actions .parent-enrol__btn {
+    width: 100%;
+  }
+}

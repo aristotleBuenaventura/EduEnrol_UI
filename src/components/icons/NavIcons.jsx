@@ -146,3 +146,21 @@ export function IconArrowRight(props) {
   )
 }
 
+export function IconCalendar(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <rect x="3" y="5" width="18" height="16" rx="2" />
+      <path d="M3 10h18M8 3v4M16 3v4" />
+    </svg>
+  )
+}
+
+export function IconSave(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <path d="M6 4h9l5 5v11a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" />
+      <path d="M8 4v4h8V4M8 20v-5h8v5" />
+    </svg>
+  )
+}
+
