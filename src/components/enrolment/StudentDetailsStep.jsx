@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { IconCalendar } from '../icons/NavIcons.jsx'
+import EnrolSelect from './EnrolSelect.jsx'
 
 const GENDERS = ['Male', 'Female', 'Other', 'Prefer not to say']
 const ETHNICITIES = ['NZ European', 'Māori', 'Pacific Islander', 'Asian', 'Other']
@@ -178,19 +179,13 @@ function StudentDetailsStep({ value, onChange, yearLevelOptions }) {
             Year Level
             <RequiredMark />
           </label>
-          <select
+          <EnrolSelect
             id="enrol-year"
-            className="parent-enrol__select"
             value={value.yearLevel}
-            onChange={(e) => patch({ yearLevel: e.target.value })}
-          >
-            <option value="">Select year level</option>
-            {yearLevelOptions.map((y) => (
-              <option key={y} value={y}>
-                {y}
-              </option>
-            ))}
-          </select>
+            onChange={(yearLevel) => patch({ yearLevel })}
+            options={yearLevelOptions}
+            placeholder="Select year level"
+          />
         </div>
       </div>
     </>

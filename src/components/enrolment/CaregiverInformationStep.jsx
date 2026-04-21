@@ -1,3 +1,5 @@
+import EnrolSelect from './EnrolSelect.jsx'
+
 function RequiredMark() {
   return (
     <span className="parent-enrol__required" aria-hidden="true">
@@ -27,19 +29,14 @@ function CaregiverInformationStep({ value, onChange, relationshipOptions }) {
             Relationship to Student
             <RequiredMark />
           </label>
-          <select
+          <EnrolSelect
             id="enrol-caregiver-relationship"
-            className="parent-enrol__select"
             value={value.relationship}
-            onChange={(e) => patch({ relationship: e.target.value })}
-          >
-            <option value="">Select relationship to student</option>
-            {relationshipOptions.map((r) => (
-              <option key={r} value={r}>
-                {r}
-              </option>
-            ))}
-          </select>
+            onChange={(relationship) => patch({ relationship })}
+            options={relationshipOptions}
+            placeholder="Select relationship to student"
+            menuPlacement="down"
+          />
         </div>
 
         <div>

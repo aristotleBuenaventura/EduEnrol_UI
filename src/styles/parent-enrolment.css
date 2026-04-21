@@ -195,6 +195,7 @@
   border-radius: var(--enrol-radius);
   padding: 28px clamp(20px, 3vw, 32px) 32px;
   margin-bottom: 1.5rem;
+  overflow: visible;
 }
 
 .parent-enrol__section-title {
@@ -467,6 +468,166 @@
 .parent-enrol__btn--primary:hover {
   background: var(--enrol-teal-hover);
   border-color: var(--enrol-teal-hover);
+}
+
+/* ---- EnrolSelect (custom dropdown — reuse for all wizard selects) ---- */
+
+.enrol-select {
+  --enrol-select-orange: #e0644a;
+  --enrol-select-orange-hover: #d4553b;
+  --enrol-select-menu-radius: 14px;
+  --enrol-select-option-radius: 10px;
+
+  position: relative;
+  width: 100%;
+}
+
+.enrol-select__control {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 46px;
+  padding: 12px 14px;
+  border: 1px solid var(--enrol-border);
+  border-radius: 12px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  color: var(--enrol-text);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.enrol-select__control:hover {
+  border-color: #d1d5db;
+}
+
+.enrol-select__control:focus-visible {
+  border-color: rgba(16, 110, 94, 0.45);
+  box-shadow: 0 0 0 3px rgba(16, 110, 94, 0.12);
+  outline: none;
+}
+
+.enrol-select__value {
+  flex: 1;
+  min-width: 0;
+  font-weight: 500;
+}
+
+.enrol-select__value--placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.enrol-select__chevron {
+  flex-shrink: 0;
+  color: #94a3b8;
+  transition: transform 0.2s ease;
+}
+
+.enrol-select__chevron.is-open {
+  transform: rotate(180deg);
+}
+
+.enrol-select__menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  border-radius: var(--enrol-select-menu-radius);
+  background: #fff;
+  border: 1px solid var(--enrol-border);
+  box-shadow:
+    0 14px 40px rgba(15, 23, 42, 0.12),
+    0 4px 12px rgba(15, 23, 42, 0.06);
+  padding: 8px;
+}
+
+.enrol-select--menu-up .enrol-select__menu {
+  bottom: calc(100% + 10px);
+}
+
+.enrol-select--menu-down .enrol-select__menu {
+  top: calc(100% + 10px);
+}
+
+.enrol-select__menu-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: min(320px, 55vh);
+  overflow-y: auto;
+}
+
+.enrol-select__option {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-radius: var(--enrol-select-option-radius);
+  padding: 10px 10px 10px 8px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--enrol-text);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
+}
+
+/* Selected = current value (check only); orange = pointer highlight (.is-highlighted) */
+.enrol-select__option.is-selected:not(.is-highlighted) {
+  background: transparent;
+}
+
+.enrol-select__option.is-selected:not(.is-highlighted) .enrol-select__option-check {
+  color: var(--enrol-success);
+}
+
+.enrol-select__option.is-highlighted {
+  background: var(--enrol-select-orange);
+  color: #fff;
+}
+
+.enrol-select__option.is-highlighted:hover {
+  background: var(--enrol-select-orange-hover);
+  color: #fff;
+}
+
+.enrol-select__option:focus-visible {
+  outline: 2px solid var(--enrol-teal);
+  outline-offset: 2px;
+}
+
+.enrol-select__option.is-highlighted:focus-visible {
+  outline-color: #fff;
+}
+
+.enrol-select__option-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+}
+
+.enrol-select__option.is-highlighted .enrol-select__option-check {
+  color: #fff;
+}
+
+.enrol-select__option-label {
+  line-height: 1.35;
 }
 
 @media (max-width: 560px) {
