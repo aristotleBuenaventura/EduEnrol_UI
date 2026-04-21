@@ -107,20 +107,31 @@ function ParentEnrolStudentPage() {
 
       <div className="parent-enrol__tabs-scroll">
         <ol className="parent-enrol__tabs" aria-label="Enrolment steps">
-          {enrolmentWizardSteps.map((s, i) => (
-            <li
-              key={s.id}
-              className={`parent-enrol__tab${i === stepIndex ? ' is-active' : ''}${i < stepIndex ? ' is-done' : ''}`}
-              aria-current={i === stepIndex ? 'step' : undefined}
-            >
-              {i < stepIndex ? (
-                <span className="parent-enrol__tab-check" aria-hidden="true">
-                  <IconCheck width={16} height={16} />
-                </span>
-              ) : null}
-              {s.label}
-            </li>
-          ))}
+          {enrolmentWizardSteps.map((s, i) => {
+            const isPast = i < stepIndex
+            const isActive = i === stepIndex
+            return (
+              <li key={s.id} className="parent-enrol__tabs-item">
+                {isPast ? (
+                  <button
+                    type="button"
+                    className="parent-enrol__tab is-done"
+                    onClick={() => setStepIndex(i)}
+                    aria-label={`Go to ${s.label}`}
+                  >
+                    <span className="parent-enrol__tab-check" aria-hidden="true">
+                      <IconCheck width={16} height={16} />
+                    </span>
+                    {s.label}
+                  </button>
+                ) : (
+                  <span className={`parent-enrol__tab${isActive ? ' is-active' : ''}`} aria-current={isActive ? 'step' : undefined}>
+                    {s.label}
+                  </span>
+                )}
+              </li>
+            )
+          })}
         </ol>
       </div>
 

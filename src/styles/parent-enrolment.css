@@ -131,6 +131,12 @@
   list-style: none;
 }
 
+.parent-enrol__tabs-item {
+  list-style: none;
+  flex-shrink: 0;
+  display: flex;
+}
+
 .parent-enrol__tab {
   cursor: default;
   font-family: inherit;
@@ -146,6 +152,21 @@
   align-items: center;
   gap: 6px;
   flex-shrink: 0;
+}
+
+button.parent-enrol__tab {
+  border: none;
+  cursor: pointer;
+  text-align: inherit;
+}
+
+button.parent-enrol__tab:focus-visible {
+  outline: 2px solid var(--enrol-teal);
+  outline-offset: 2px;
+}
+
+button.parent-enrol__tab.is-done:hover {
+  background: #bbf7d0;
 }
 
 .parent-enrol__tab.is-active {
