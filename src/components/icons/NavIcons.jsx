@@ -164,3 +164,13 @@ export function IconSave(props) {
   )
 }
 
+export function IconUpload(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <path d="M12 16V6" />
+      <path d="m8 10 4-4 4 4" />
+      <path d="M5 20h14" />
+    </svg>
+  )
+}
+

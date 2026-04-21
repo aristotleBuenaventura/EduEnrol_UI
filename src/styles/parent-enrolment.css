@@ -416,6 +416,65 @@ button.parent-enrol__tab.is-done:hover {
   outline-offset: 2px;
 }
 
+.parent-enrol__upload {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 126px;
+  padding: 16px;
+  border: 1px dashed #d1d5db;
+  border-radius: var(--enrol-radius-input);
+  background: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.parent-enrol__upload:hover {
+  border-color: #9ca3af;
+  background: #fbfdff;
+}
+
+.parent-enrol__upload:focus-within {
+  border-color: rgba(16, 110, 94, 0.45);
+  box-shadow: 0 0 0 3px rgba(16, 110, 94, 0.12);
+}
+
+.parent-enrol__upload-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.parent-enrol__upload-icon {
+  color: #64748b;
+  display: grid;
+  place-items: center;
+}
+
+.parent-enrol__upload-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--enrol-text);
+}
+
+.parent-enrol__upload-subtitle {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.parent-enrol__upload-file {
+  margin-top: 4px;
+  font-size: 0.8125rem;
+  color: var(--enrol-teal);
+  font-weight: 600;
+}
+
 .parent-enrol__placeholder-step {
   padding: 2rem 0;
   text-align: center;
@@ -491,6 +550,51 @@ button.parent-enrol__tab.is-done:hover {
 .parent-enrol__btn--primary:hover {
   background: var(--enrol-teal-hover);
   border-color: var(--enrol-teal-hover);
+}
+
+.parent-enrol__toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 120;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 320px;
+  max-width: min(420px, calc(100vw - 24px));
+  padding: 14px 16px;
+  border: 1px solid var(--enrol-border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow:
+    0 10px 24px rgba(15, 23, 42, 0.14),
+    0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+.parent-enrol__toast-icon {
+  margin-top: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #111827;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.parent-enrol__toast-title {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.parent-enrol__toast-desc {
+  margin: 2px 0 0;
+  font-size: 0.875rem;
+  color: #6b7280;
 }
 
 /* ---- EnrolSelect (custom dropdown — reuse for all wizard selects) ---- */
@@ -684,5 +788,12 @@ button.parent-enrol__tab.is-done:hover {
 
   .parent-enrol__footer-actions .parent-enrol__btn {
     width: 100%;
+  }
+
+  .parent-enrol__toast {
+    right: 12px;
+    bottom: 12px;
+    min-width: 0;
+    max-width: calc(100vw - 24px);
   }
 }

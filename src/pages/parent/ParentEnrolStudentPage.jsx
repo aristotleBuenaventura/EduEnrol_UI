@@ -1,12 +1,16 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import AddressAndZoningStep from '../../components/enrolment/AddressAndZoningStep.jsx'
 import CaregiverInformationStep from '../../components/enrolment/CaregiverInformationStep.jsx'
 import { initialAddressDetails } from '../../components/enrolment/addressDetailsDefaults.js'
 import { initialCaregiverDetails } from '../../components/enrolment/caregiverDetailsDefaults.js'
+import { initialDocumentsDetails } from '../../components/enrolment/documentsDetailsDefaults.js'
 import { initialMedicalDetails } from '../../components/enrolment/medicalDetailsDefaults.js'
 import { initialPreviousSchoolDetails } from '../../components/enrolment/previousSchoolDetailsDefaults.js'
+import { initialReviewDetails } from '../../components/enrolment/reviewDetailsDefaults.js'
+import DocumentsStep from '../../components/enrolment/DocumentsStep.jsx'
 import MedicalInformationStep from '../../components/enrolment/MedicalInformationStep.jsx'
 import PreviousSchoolStep from '../../components/enrolment/PreviousSchoolStep.jsx'
+import ReviewSubmitStep from '../../components/enrolment/ReviewSubmitStep.jsx'
 import StudentDetailsStep from '../../components/enrolment/StudentDetailsStep.jsx'
 import { initialStudentDetails } from '../../components/enrolment/studentDetailsDefaults.js'
 import {
@@ -43,6 +47,9 @@ function ParentEnrolStudentPage() {
   const [addressDetails, setAddressDetails] = useState(initialAddressDetails)
   const [previousSchoolDetails, setPreviousSchoolDetails] = useState(initialPreviousSchoolDetails)
   const [medicalDetails, setMedicalDetails] = useState(initialMedicalDetails)
+  const [documentsDetails, setDocumentsDetails] = useState(initialDocumentsDetails)
+  const [reviewDetails, setReviewDetails] = useState(initialReviewDetails)
+  const [showSubmitToast, setShowSubmitToast] = useState(false)
   const [yearLevelOptions, _setYearLevelOptions] = useState(() => [...defaultYearLevelOptions])
   const [relationshipOptions, _setCaregiverRelationshipOptions] = useState(() => [...defaultCaregiverRelationshipOptions])
 
@@ -74,10 +81,14 @@ function ParentEnrolStudentPage() {
         return <PreviousSchoolStep value={previousSchoolDetails} onChange={setPreviousSchoolDetails} />
       case 'medical':
         return <MedicalInformationStep value={medicalDetails} onChange={setMedicalDetails} />
+      case 'documents':
+        return <DocumentsStep value={documentsDetails} onChange={setDocumentsDetails} />
+      case 'review':
+        return <ReviewSubmitStep value={reviewDetails} onChange={setReviewDetails} />
       default:
         return <PlaceholderStep title={currentStep.label} />
     }
-  }, [currentStep, studentDetails, yearLevelOptions, caregiverDetails, relationshipOptions, addressDetails, previousSchoolDetails, medicalDetails])
+  }, [currentStep, studentDetails, yearLevelOptions, caregiverDetails, relationshipOptions, addressDetails, previousSchoolDetails, medicalDetails, documentsDetails, reviewDetails])
 
   const goNext = () => setStepIndex((i) => Math.min(i + 1, totalSteps - 1))
   const goBack = () => setStepIndex((i) => Math.max(i - 1, 0))
@@ -87,6 +98,19 @@ function ParentEnrolStudentPage() {
   }
 
   const showAutosave = stepIndex > 0
+  const isFinalStep = stepIndex === totalSteps - 1
+
+  useEffect(() => {
+    if (!showSubmitToast) return undefined
+    const timer = window.setTimeout(() => {
+      setShowSubmitToast(false)
+    }, 3500)
+    return () => window.clearTimeout(timer)
+  }, [showSubmitToast])
+
+  const handleSubmitApplication = () => {
+    setShowSubmitToast(true)
+  }
 
   return (
     <div className="parent-enrol">
@@ -162,12 +186,30 @@ function ParentEnrolStudentPage() {
             <IconSave width={20} height={20} />
             Save Draft
           </button>
-          <button type="button" className="parent-enrol__btn parent-enrol__btn--primary" onClick={goNext} disabled={stepIndex >= totalSteps - 1}>
-            Next
-            <IconArrowRight width={18} height={18} />
-          </button>
+          {isFinalStep ? (
+            <button type="button" className="parent-enrol__btn parent-enrol__btn--primary" onClick={handleSubmitApplication}>
+              Submit Application
+              <IconCheck width={18} height={18} />
+            </button>
+          ) : (
+            <button type="button" className="parent-enrol__btn parent-enrol__btn--primary" onClick={goNext} disabled={stepIndex >= totalSteps - 1}>
+              Next
+              <IconArrowRight width={18} height={18} />
+            </button>
+          )}
         </div>
       </footer>
+      {showSubmitToast ? (
+        <div className="parent-enrol__toast" role="status" aria-live="polite">
+          <span className="parent-enrol__toast-icon" aria-hidden="true">
+            <IconCheck width={16} height={16} />
+          </span>
+          <div>
+            <p className="parent-enrol__toast-title">Application submitted successfully!</p>
+            <p className="parent-enrol__toast-desc">You will receive a confirmation email shortly.</p>
+          </div>
+        </div>
+      ) : null}
     </div>
   )
 }
