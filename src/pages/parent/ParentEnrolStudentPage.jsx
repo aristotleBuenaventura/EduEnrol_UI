@@ -1,6 +1,12 @@
 import { useMemo, useState } from 'react'
+import AddressAndZoningStep from '../../components/enrolment/AddressAndZoningStep.jsx'
 import CaregiverInformationStep from '../../components/enrolment/CaregiverInformationStep.jsx'
+import { initialAddressDetails } from '../../components/enrolment/addressDetailsDefaults.js'
 import { initialCaregiverDetails } from '../../components/enrolment/caregiverDetailsDefaults.js'
+import { initialMedicalDetails } from '../../components/enrolment/medicalDetailsDefaults.js'
+import { initialPreviousSchoolDetails } from '../../components/enrolment/previousSchoolDetailsDefaults.js'
+import MedicalInformationStep from '../../components/enrolment/MedicalInformationStep.jsx'
+import PreviousSchoolStep from '../../components/enrolment/PreviousSchoolStep.jsx'
 import StudentDetailsStep from '../../components/enrolment/StudentDetailsStep.jsx'
 import { initialStudentDetails } from '../../components/enrolment/studentDetailsDefaults.js'
 import {
@@ -34,6 +40,9 @@ function ParentEnrolStudentPage() {
   const [stepIndex, setStepIndex] = useState(0)
   const [studentDetails, setStudentDetails] = useState(initialStudentDetails)
   const [caregiverDetails, setCaregiverDetails] = useState(initialCaregiverDetails)
+  const [addressDetails, setAddressDetails] = useState(initialAddressDetails)
+  const [previousSchoolDetails, setPreviousSchoolDetails] = useState(initialPreviousSchoolDetails)
+  const [medicalDetails, setMedicalDetails] = useState(initialMedicalDetails)
   const [yearLevelOptions, _setYearLevelOptions] = useState(() => [...defaultYearLevelOptions])
   const [relationshipOptions, _setCaregiverRelationshipOptions] = useState(() => [...defaultCaregiverRelationshipOptions])
 
@@ -59,10 +68,16 @@ function ParentEnrolStudentPage() {
             relationshipOptions={relationshipOptions}
           />
         )
+      case 'address':
+        return <AddressAndZoningStep value={addressDetails} onChange={setAddressDetails} />
+      case 'previous':
+        return <PreviousSchoolStep value={previousSchoolDetails} onChange={setPreviousSchoolDetails} />
+      case 'medical':
+        return <MedicalInformationStep value={medicalDetails} onChange={setMedicalDetails} />
       default:
         return <PlaceholderStep title={currentStep.label} />
     }
-  }, [currentStep, studentDetails, yearLevelOptions, caregiverDetails, relationshipOptions])
+  }, [currentStep, studentDetails, yearLevelOptions, caregiverDetails, relationshipOptions, addressDetails, previousSchoolDetails, medicalDetails])
 
   const goNext = () => setStepIndex((i) => Math.min(i + 1, totalSteps - 1))
   const goBack = () => setStepIndex((i) => Math.max(i - 1, 0))
