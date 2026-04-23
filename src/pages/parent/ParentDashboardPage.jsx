@@ -31,13 +31,13 @@ function ParentDashboardPage() {
       <section className="parent-dashboard__stats" aria-label="Application summary">
         <StatSummaryCard
           value={stats.draftCount}
-          label="Draft applications"
+          label="Drafts"
           tone="mint"
           icon={<IconPencil width={20} height={20} />}
         />
         <StatSummaryCard
           value={stats.inProgressCount}
-          label="In progress"
+          label="In Progress"
           tone="sky"
           icon={<IconClock width={20} height={20} />}
         />

@@ -24,10 +24,10 @@ export function IconDashboard(props) {
 export function IconGradCap(props) {
   return (
     <svg {...iconProps} {...props}>
-      <path d="M4 10.5 12 6l8 4.5" />
-      <path d="M6 10.5V16" />
-      <path d="M18 10.5V16" />
-      <path d="M6 16c0 1.5 2.7 2.5 6 2.5s6-1 6-2.5" />
+      <path d="M3 10.5 12 6l9 4.5-9 4.5-9-4.5z" />
+      <path d="M7 13v3.1c0 0.9 2.2 2 5 2s5-1.1 5-2V13" />
+      <path d="M21 11v4.2" />
+      <circle cx="21" cy="16.2" r="0.9" fill="currentColor" stroke="none" />
     </svg>
   )
 }

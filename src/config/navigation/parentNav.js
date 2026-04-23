@@ -4,15 +4,15 @@
  */
 
 export const parentNavItems = [
-  { id: 'dashboard', label: 'Dashboard', path: 'dashboard', icon: 'dashboard' },
-  { id: 'enrol', label: 'Enrol Student', path: 'enrol-student', icon: 'gradCap' },
-  { id: 'applications', label: 'My Applications', path: 'applications', icon: 'document' },
-  { id: 'notifications', label: 'Notifications', path: 'notifications', icon: 'bell' },
+  { id: 'dashboard', label: 'Home', subLabel: 'Kainga', path: 'dashboard', icon: 'dashboard' },
+  { id: 'enrol', label: 'Enrol Student', subLabel: 'Whakaurunga', path: 'enrol-student', icon: 'gradCap' },
+  { id: 'applications', label: 'Applications', subLabel: 'Tono', path: 'applications', icon: 'document' },
+  { id: 'notifications', label: 'Notifications', subLabel: 'Panui', path: 'notifications', icon: 'bell' },
 ]
 
 export const parentBrand = {
   title: 'EduEnroll',
-  subtitle: 'New Zealand',
+  subtitle: 'Aotearoa NZ',
 }
 
-export const parentRoleLabel = 'Logged in as Parent'
+export const parentRoleLabel = 'Parent'

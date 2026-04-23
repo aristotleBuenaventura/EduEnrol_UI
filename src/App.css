@@ -39,92 +39,122 @@
 
 .brand-header {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.95rem;
   align-items: center;
 }
 
 .brand-icon {
-  width: 2.15rem;
-  height: 2.15rem;
+  width: 3.1rem;
+  height: 3.1rem;
   border-radius: 999px;
   background: #143f63;
   color: #ffffff;
   display: grid;
   place-content: center;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
+  flex-shrink: 0;
 }
 
 .brand-header h1 {
   margin: 0;
   color: #1f2933;
-  font-size: 1.82rem;
+  font-size: 1.5rem;
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 800;
   line-height: 1.2;
 }
 
 .brand-header p {
   margin: 0.15rem 0 0;
-  color: #5f6973;
-  font-size: 0.92rem;
+  color: #6b7280;
+  font-size: 1.05rem;
 }
 
 .ministry-badge {
-  margin: -0.3rem 0 0.2rem;
+  margin: -0.15rem 0 0.2rem;
   width: fit-content;
-  font-size: 0.72rem;
-  color: #4f5e5d;
-  background: #e9efec;
-  border: 1px solid #dce5e0;
-  padding: 0.24rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: #355f4f;
+  background: #dfe8e3;
+  border: 1px solid #b8ccc1;
+  padding: 0.5rem 0.98rem;
   border-radius: 999px;
+  line-height: 1;
+}
+
+.ministry-badge__icon {
+  display: inline-grid;
+  place-items: center;
+  color: #2d6a54;
+  flex-shrink: 0;
 }
 
 .feature-list {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1rem;
 }
 
 .feature-item {
   background: #ffffff;
   border: 1px solid #e4e8ec;
-  border-radius: 0.95rem;
-  padding: 0.9rem 1rem;
+  border-radius: 1.35rem;
+  padding: 1.25rem 1.3rem;
   display: flex;
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
 .feature-item h3 {
   margin: 0;
   color: #27333d;
-  font-size: 0.9rem;
+  font-size: 1.02rem;
 }
 
 .feature-item p {
-  margin: 0.35rem 0 0;
+  margin: 0.45rem 0 0;
   color: #677581;
-  font-size: 0.8rem;
-  line-height: 1.4;
+  font-size: 0.95rem;
+  line-height: 1.45;
 }
 
 .feature-icon {
-  width: 0.78rem;
-  height: 0.78rem;
-  border-radius: 999px;
-  margin-top: 0.25rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.15rem;
   flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  font-size: 0.95rem;
+  line-height: 1;
 }
 
 .feature-icon.enrollment {
-  background: #ffc86d;
+  background: transparent;
+}
+
+.feature-icon.enrollment::before {
+  content: '✨';
 }
 
 .feature-icon.workflow {
-  background: #7daef5;
+  background: transparent;
+}
+
+.feature-icon.workflow::before {
+  content: '🔄';
 }
 
 .feature-icon.support {
-  background: #58c8ab;
+  background: transparent;
+}
+
+.feature-icon.support::before {
+  content: '🌍';
 }
 
 .ui-card {

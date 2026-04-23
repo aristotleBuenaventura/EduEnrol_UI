@@ -4,6 +4,7 @@ import Button from '../components/ui/Button'
 import Card from '../components/ui/Card'
 import FeatureItem from '../components/ui/FeatureItem'
 import InputField from '../components/ui/InputField'
+import { IconGradCap } from '../components/icons/NavIcons.jsx'
 import '../App.css'
 
 function LoginPage() {
@@ -52,14 +53,34 @@ function LoginPage() {
         <section className="brand-panel">
           <header className="brand-header">
             <span className="brand-icon" aria-hidden="true">
-              E
+              <IconGradCap width={22} height={22} />
             </span>
             <div>
               <h1>EduEnroll NZ</h1>
               <p>Digital Student Enrolment Platform</p>
             </div>
           </header>
-          <p className="ministry-badge">Ministry of Education (MoE) Verified</p>
+          <p className="ministry-badge">
+            <span className="ministry-badge__icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 3 18.5 5.8v5.5c0 4.1-2.8 7.9-6.5 9.3-3.7-1.4-6.5-5.2-6.5-9.3V5.8L12 3Z"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="m9.2 12 1.9 1.9 3.6-3.6"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+            <span>Ministry of Education (MoE) Verified</span>
+          </p>
 
           <div className="feature-list">
             {featureItems.map((feature) => (

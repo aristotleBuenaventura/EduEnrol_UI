@@ -16,17 +16,19 @@ function InfoActionCard({ icon, title, body, actionLabel, actionHref, onAction, 
       <div className="info-action-card__icon" aria-hidden="true">
         {icon}
       </div>
-      {title ? <h3 className="info-action-card__title">{title}</h3> : null}
-      <p className="info-action-card__body">{body}</p>
-      {actionHref ? (
-        <a href={actionHref} className="info-action-card__btn">
-          {actionLabel}
-        </a>
-      ) : (
-        <button type="button" className="info-action-card__btn" onClick={onAction}>
-          {actionLabel}
-        </button>
-      )}
+      <div className="info-action-card__content">
+        {title ? <h3 className="info-action-card__title">{title}</h3> : null}
+        <p className="info-action-card__body">{body}</p>
+        {actionHref ? (
+          <a href={actionHref} className="info-action-card__btn">
+            {actionLabel}
+          </a>
+        ) : (
+          <button type="button" className="info-action-card__btn" onClick={onAction}>
+            {actionLabel}
+          </button>
+        )}
+      </div>
     </>
   )
 

@@ -31,16 +31,16 @@ function AppSidebar({
     <aside className={sidebarClass} aria-label="Main navigation">
       {collapsed ? (
         <div className="app-sidebar__top-collapsed">
+          <span className="app-sidebar__toggle-brand" aria-hidden="true">
+            <IconGradCap width={20} height={20} />
+          </span>
           <button
             type="button"
-            className="app-sidebar__toggle-pill"
+            className="app-sidebar__collapse-btn app-sidebar__collapse-btn--collapsed"
             onClick={onToggleCollapse}
             aria-expanded={false}
             aria-label="Expand sidebar"
           >
-            <span className="app-sidebar__toggle-brand" aria-hidden="true">
-              <IconGradCap width={20} height={20} />
-            </span>
             <IconChevronRight className="app-sidebar__toggle-chevron" aria-hidden="true" />
           </button>
         </div>
@@ -67,7 +67,12 @@ function AppSidebar({
         </div>
       )}
 
-      {!collapsed && <div className="app-sidebar__role-pill">{roleLabel}</div>}
+      {!collapsed && (
+        <div className="app-sidebar__role-pill">
+          <span className="app-sidebar__role-label">ROLE</span>
+          <span className="app-sidebar__role-value">{roleLabel}</span>
+        </div>
+      )}
 
       <nav className="app-sidebar__nav" aria-label="Sections">
         <ul>
@@ -83,7 +88,12 @@ function AppSidebar({
                 <span className="app-sidebar__link-icon" aria-hidden="true">
                   <NavIcon name={item.icon} />
                 </span>
-                {!collapsed ? <span className="app-sidebar__link-label">{item.label}</span> : null}
+                {!collapsed ? (
+                  <span className="app-sidebar__link-text">
+                    <span className="app-sidebar__link-label">{item.label}</span>
+                    {item.subLabel ? <span className="app-sidebar__link-sub">{item.subLabel}</span> : null}
+                  </span>
+                ) : null}
               </NavLink>
             </li>
           ))}

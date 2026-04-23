@@ -1,4 +1,4 @@
-import { IconBell, IconGlobe, IconSearch } from '../icons/NavIcons.jsx'
+import { IconBell, IconSearch } from '../icons/NavIcons.jsx'
 
 /**
  * @param {object} props
@@ -26,8 +26,32 @@ function AppTopBar({
         />
       </div>
       <div className="app-topbar__actions">
-        <button type="button" className="app-topbar__icon-btn" aria-label="Language">
-          <IconGlobe width={22} height={22} />
+        <span className="app-topbar__verified-pill">
+          <span className="app-topbar__verified-icon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 3 18.5 5.8v5.5c0 4.1-2.8 7.9-6.5 9.3-3.7-1.4-6.5-5.2-6.5-9.3V5.8L12 3Z"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="m9.2 12 1.9 1.9 3.6-3.6"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+          <span>MoE Verified</span>
+        </span>
+        <button type="button" className="app-topbar__lang-pill is-active" aria-label="Language English">
+          English
+        </button>
+        <button type="button" className="app-topbar__lang-pill" aria-label="Language Te Reo">
+          Te Reo
         </button>
         <button type="button" className="app-topbar__icon-btn" aria-label="Notifications">
           <IconBell width={22} height={22} />
