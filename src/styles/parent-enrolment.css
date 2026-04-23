@@ -1,8 +1,8 @@
 /* Parent — Enrolment Application wizard */
 
 .parent-enrol {
-  --enrol-teal: #106e5e;
-  --enrol-teal-hover: #0d5d50;
+  --enrol-teal: #153f63;
+  --enrol-teal-hover: #0f3350;
   --enrol-text: #111827;
   --enrol-muted: #6b7280;
   --enrol-border: #e5e7eb;
@@ -11,8 +11,8 @@
   --enrol-radius: 12px;
   --enrol-radius-input: 10px;
   --enrol-required: #dc2626;
-  --enrol-success: #059669;
-  --enrol-success-muted: #d1fae5;
+  --enrol-success: #1d4f79;
+  --enrol-success-muted: #e6eff8;
   --enrol-orange-hover-bg: #fff7ed;
   --enrol-orange-hover-border: #fb923c;
   --enrol-orange-hover-text: #9a3412;
@@ -166,7 +166,7 @@ button.parent-enrol__tab:focus-visible {
 }
 
 button.parent-enrol__tab.is-done:hover {
-  background: #bbf7d0;
+  background: #dbe9f8;
 }
 
 .parent-enrol__tab.is-active {
@@ -176,7 +176,7 @@ button.parent-enrol__tab.is-done:hover {
 
 .parent-enrol__tab.is-done:not(.is-active) {
   background: var(--enrol-success-muted);
-  color: #065f46;
+  color: #1d4f79;
 }
 
 .parent-enrol__tab-check {
@@ -264,8 +264,8 @@ button.parent-enrol__tab.is-done:hover {
 
 .parent-enrol__input:focus,
 .parent-enrol__select:focus {
-  border-color: rgba(16, 110, 94, 0.45);
-  box-shadow: 0 0 0 3px rgba(16, 110, 94, 0.12);
+  border-color: rgba(21, 63, 99, 0.45);
+  box-shadow: 0 0 0 3px rgba(21, 63, 99, 0.12);
 }
 
 .parent-enrol__input::placeholder {
@@ -359,7 +359,7 @@ button.parent-enrol__tab.is-done:hover {
 
 .parent-enrol__radio-option input:checked + .parent-enrol__radio-pill {
   border-color: var(--enrol-teal);
-  background: rgba(16, 110, 94, 0.08);
+  background: rgba(21, 63, 99, 0.08);
   box-shadow: inset 0 0 0 1px var(--enrol-teal);
 }
 
@@ -439,8 +439,8 @@ button.parent-enrol__tab.is-done:hover {
 }
 
 .parent-enrol__upload:focus-within {
-  border-color: rgba(16, 110, 94, 0.45);
-  box-shadow: 0 0 0 3px rgba(16, 110, 94, 0.12);
+  border-color: rgba(21, 63, 99, 0.45);
+  box-shadow: 0 0 0 3px rgba(21, 63, 99, 0.12);
 }
 
 .parent-enrol__upload-input {
@@ -636,8 +636,8 @@ button.parent-enrol__tab.is-done:hover {
 }
 
 .enrol-select__control:focus-visible {
-  border-color: rgba(16, 110, 94, 0.45);
-  box-shadow: 0 0 0 3px rgba(16, 110, 94, 0.12);
+  border-color: rgba(21, 63, 99, 0.45);
+  box-shadow: 0 0 0 3px rgba(21, 63, 99, 0.12);
   outline: none;
 }
 

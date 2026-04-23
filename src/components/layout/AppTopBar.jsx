@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { IconBell, IconSearch } from '../icons/NavIcons.jsx'
 
 /**
@@ -13,6 +14,8 @@ function AppTopBar({
   onSearchChange,
   notificationCount = 0,
 }) {
+  const [language, setLanguage] = useState('en')
+
   return (
     <header className="app-topbar">
       <div className="app-topbar__search">
@@ -47,12 +50,26 @@ function AppTopBar({
           </span>
           <span>MoE Verified</span>
         </span>
-        <button type="button" className="app-topbar__lang-pill is-active" aria-label="Language English">
-          English
-        </button>
-        <button type="button" className="app-topbar__lang-pill" aria-label="Language Te Reo">
-          Te Reo
-        </button>
+        <div className="app-topbar__lang-toggle" role="group" aria-label="Language toggle">
+          <button
+            type="button"
+            className={`app-topbar__lang-pill${language === 'en' ? ' is-active' : ''}`}
+            aria-label="Language English"
+            aria-pressed={language === 'en'}
+            onClick={() => setLanguage('en')}
+          >
+            English
+          </button>
+          <button
+            type="button"
+            className={`app-topbar__lang-pill${language === 'mi' ? ' is-active' : ''}`}
+            aria-label="Language Te Reo"
+            aria-pressed={language === 'mi'}
+            onClick={() => setLanguage('mi')}
+          >
+            Te Reo
+          </button>
+        </div>
         <button type="button" className="app-topbar__icon-btn" aria-label="Notifications">
           <IconBell width={22} height={22} />
           {notificationCount > 0 ? (

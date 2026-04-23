@@ -9,7 +9,15 @@ function StaffLoginPage() {
     <div className="staff-login-root">
       <Card className="staff-login-card">
         <span className="staff-shield-icon" aria-hidden="true">
-          O
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M12 3 19 6v5.8c0 4.2-2.9 8.1-7 9.6-4.1-1.5-7-5.4-7-9.6V6l7-3Z"
+              stroke="currentColor"
+              strokeWidth="1.85"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </span>
         <h2>Staff Portal</h2>
         <p className="card-subtitle">Sign in with your staff credentials</p>

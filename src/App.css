@@ -311,14 +311,14 @@
 }
 
 .staff-shield-icon {
-  width: 3rem;
-  height: 3rem;
+  width: 3.35rem;
+  height: 3.35rem;
   border-radius: 0.8rem;
   background: #153f63;
   color: #ffffff;
   display: inline-grid;
   place-content: center;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
 }
