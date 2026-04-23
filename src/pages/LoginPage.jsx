@@ -7,12 +7,44 @@ import InputField from '../components/ui/InputField'
 import '../App.css'
 
 function LoginPage() {
-  const [isSignUp, setIsSignUp] = useState(false)
+  const [isRegisterMode, setIsRegisterMode] = useState(false)
 
-  const cardTitle = isSignUp ? 'Create Account' : 'Welcome Back'
-  const cardSubtitle = isSignUp
-    ? 'Fill in your details to create a new account'
-    : 'Sign in to your account to continue'
+  const featureItems = isRegisterMode
+    ? [
+        {
+          iconClassName: 'feature-icon enrollment',
+          title: 'Easy Registration',
+          description: "Create your account to start managing your child's school enrolment online.",
+        },
+        {
+          iconClassName: 'feature-icon workflow',
+          title: 'Secure & Private',
+          description: 'Your data is protected with industry-standard encryption and privacy controls.',
+        },
+        {
+          iconClassName: 'feature-icon support',
+          title: 'Access Anywhere',
+          description: 'Complete enrolment forms from any device - desktop, tablet, or mobile.',
+        },
+      ]
+    : [
+        {
+          iconClassName: 'feature-icon enrollment',
+          title: 'Streamlined Enrolments',
+          description:
+            'Replace paper forms with a secure online enrolment system designed for New Zealand schools.',
+        },
+        {
+          iconClassName: 'feature-icon workflow',
+          title: 'Automated Workflows',
+          description: 'From submission to approval, track every step of the enrolment journey.',
+        },
+        {
+          iconClassName: 'feature-icon support',
+          title: 'Multilingual Support',
+          description: 'Available in English, Te Reo Maori, and Mandarin Chinese.',
+        },
+      ]
 
   return (
     <div className="login-root-center">
@@ -27,37 +59,40 @@ function LoginPage() {
               <p>Digital Student Enrolment Platform</p>
             </div>
           </header>
+          <p className="ministry-badge">Ministry of Education (MoE) Verified</p>
 
           <div className="feature-list">
-            <FeatureItem
-              iconClassName="feature-icon enrollment"
-              title="Streamlined Enrolments"
-              description="Replace paper forms with a secure online enrolment system designed for New Zealand schools."
-            />
-            <FeatureItem
-              iconClassName="feature-icon workflow"
-              title="Automated Workflows"
-              description="From submission to approval, track every step of the enrolment journey."
-            />
-            <FeatureItem
-              iconClassName="feature-icon support"
-              title="Multilingual Support"
-              description="Available in English, Te Reo Maori, and Mandarin Chinese."
-            />
+            {featureItems.map((feature) => (
+              <FeatureItem
+                key={feature.title}
+                iconClassName={feature.iconClassName}
+                title={feature.title}
+                description={feature.description}
+              />
+            ))}
           </div>
         </section>
 
         <Card className="login-card">
-          <h2>{cardTitle}</h2>
-          <p className="card-subtitle">{cardSubtitle}</p>
+          <h2>{isRegisterMode ? 'Create Account' : 'Welcome Back'}</h2>
+          <p className="card-subtitle">
+            {isRegisterMode
+              ? 'Register to start your enrolment journey'
+              : 'Sign in to your account to continue'}
+          </p>
 
           <form className="login-form" onSubmit={(event) => event.preventDefault()}>
-            {isSignUp && (
-              <InputField id="name" label="Name" placeholder="Enter your name" type="text" />
+            {isRegisterMode && (
+              <InputField id="username" label="Username" placeholder="Choose a username" type="text" />
             )}
             <InputField id="email" label="Email" placeholder="Enter your email" type="email" />
-            <InputField id="password" label="Password" placeholder="Enter your password" type="password" />
-            {isSignUp && (
+            <InputField
+              id="password"
+              label="Password"
+              placeholder={isRegisterMode ? 'Create a password' : 'Enter your password'}
+              type="password"
+            />
+            {isRegisterMode && (
               <InputField
                 id="confirmPassword"
                 label="Confirm Password"
@@ -65,12 +100,29 @@ function LoginPage() {
                 type="password"
               />
             )}
+            {!isRegisterMode && (
+              <p className="forgot-password-link">
+                <a href="#">Forgot password?</a>
+              </p>
+            )}
 
-            <Button type="submit">{isSignUp ? 'Create Account' : 'Sign In'}</Button>
-            <Button type="button" className="secondary" onClick={() => setIsSignUp((p) => !p)}>
-              {isSignUp ? 'Back to Sign In' : 'Sign Up'}
-            </Button>
+            <Button type="submit">{isRegisterMode ? 'Create Account' : 'Sign In'}</Button>
           </form>
+          <p className="register-text">
+            {isRegisterMode ? 'Already have an account?' : 'Do not have an account?'}{' '}
+            <a
+              href="#"
+              onClick={(event) => {
+                event.preventDefault()
+                setIsRegisterMode((previousValue) => !previousValue)
+              }}
+            >
+              {isRegisterMode ? 'Sign in' : 'Register'}
+            </a>
+          </p>
+          <p className="self-register-link">
+            <a href="#">Staff Login</a>
+          </p>
           <p className="login-demo-link">
             <Link to="/parent/dashboard">View parent dashboard (demo)</Link>
           </p>
