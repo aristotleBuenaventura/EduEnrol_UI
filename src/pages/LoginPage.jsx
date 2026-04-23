@@ -121,7 +121,7 @@ function LoginPage() {
             </a>
           </p>
           <p className="self-register-link">
-            <a href="#">Staff Login</a>
+            <Link to="/staff-login">Staff Login</Link>
           </p>
           <p className="login-demo-link">
             <Link to="/parent/dashboard">View parent dashboard (demo)</Link>
