@@ -163,12 +163,24 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .admin-form-builder__page-card.is-open .admin-form-builder__page-row {
   border-color: transparent;
   border-bottom: 1px solid #eef1f4;
   border-radius: 18px 18px 0 0;
+}
+
+.admin-form-builder__page-card:not(.is-open) .admin-form-builder__page-row:hover {
+  background: #f8fafc;
+  border-color: #d5dde7;
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
+}
+
+.admin-form-builder__page-card.is-open .admin-form-builder__page-row:hover {
+  background: #fbfcfe;
 }
 
 .admin-form-builder__page-left {
@@ -292,6 +304,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.admin-form-builder__question-row:hover {
+  border-color: #d9e0e9;
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.02);
 }
 
 .admin-form-builder__question-left {

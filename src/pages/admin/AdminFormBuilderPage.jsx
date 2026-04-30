@@ -220,7 +220,7 @@ function AdminFormBuilderPage() {
   const [pages, setPages] = useState(formPages)
   const [formName, setFormName] = useState('Standard Enrolment Form 2024')
   const [description, setDescription] = useState('Primary school enrolment form for new students')
-  const [openPageId, setOpenPageId] = useState('page-1')
+  const [openPageId, setOpenPageId] = useState(null)
   const [questionEditors, setQuestionEditors] = useState({})
 
   const handleToggle = (pageId) => {
@@ -413,17 +413,15 @@ function AdminFormBuilderPage() {
 
           return (
             <article key={page.id} className={`admin-form-builder__page-card ${isOpen ? 'is-open' : ''}`}>
-              <header className="admin-form-builder__page-row">
+              <header className="admin-form-builder__page-row" onClick={() => handlePageExpand(page.id)}>
                 <div className="admin-form-builder__page-left">
                   <IconGrip />
-                  <button
-                    type="button"
+                  <span
                     className={`admin-form-builder__row-chevron ${isOpen ? 'is-open' : ''}`}
-                    aria-label={`Open ${page.title}`}
-                    onClick={() => handlePageExpand(page.id)}
+                    aria-hidden="true"
                   >
                     <IconChevronRight width={14} height={14} />
-                  </button>
+                  </span>
                   <div>
                     <h2>{page.title}</h2>
                     <p>{page.questions.length + (questionEditor?.mode === 'add' ? 1 : 0)} questions</p>
@@ -433,7 +431,10 @@ function AdminFormBuilderPage() {
                   <span>Enabled</span>
                   <button
                     type="button"
-                    onClick={() => handleToggle(page.id)}
+                    onClick={(event) => {
+                      event.stopPropagation()
+                      handleToggle(page.id)
+                    }}
                     className={`admin-form-builder__toggle ${page.enabled ? 'is-on' : ''}`}
                     aria-pressed={page.enabled}
                     aria-label={`Toggle ${page.title}`}
@@ -444,7 +445,7 @@ function AdminFormBuilderPage() {
               </header>
 
               {isOpen ? (
-                <div className="admin-form-builder__page-body">
+                <div className="admin-form-builder__page-body" id={`${page.id}-content`}>
                   <div className="admin-form-builder__meta-grid admin-form-builder__meta-grid--page">
                     <label className="admin-form-builder__field">
                       <span>Page Title</span>
