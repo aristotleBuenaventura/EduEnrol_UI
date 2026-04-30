@@ -10,6 +10,7 @@ import AdminDashboardPage from './pages/admin/AdminDashboardPage.jsx'
 import AdminSectionPlaceholder from './pages/admin/AdminSectionPlaceholder.jsx'
 import AdminUsersPage from './pages/admin/AdminUsersPage.jsx'
 import AdminRulesPage from './pages/admin/AdminRulesPage.jsx'
+import AdminFormBuilderPage from './pages/admin/AdminFormBuilderPage.jsx'
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="dashboard" element={<AdminDashboardPage />} />
-        <Route path="form-builder" element={<AdminSectionPlaceholder />} />
+        <Route path="form-builder" element={<AdminFormBuilderPage />} />
         <Route path="workflow" element={<AdminSectionPlaceholder />} />
         <Route path="rules" element={<AdminRulesPage />} />
         <Route path="users" element={<AdminUsersPage />} />
