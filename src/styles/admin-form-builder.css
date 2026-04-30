@@ -334,6 +334,12 @@
   color: #ffffff;
 }
 
+.admin-form-builder__tag--conditional {
+  border-color: transparent;
+  background: #166534;
+  color: #ffffff;
+}
+
 .admin-form-builder__question-actions {
   display: inline-flex;
   align-items: center;

@@ -37,20 +37,23 @@ const formPages = [
     id: 'page-2',
     title: 'Page 2: Caregiver Information',
     pageTitle: 'Caregiver Information',
-    pageDescription: 'Parent and caregiver contact details',
+    pageDescription: 'Details of parents/caregivers',
     enabled: true,
-    questions: Array.from({ length: 7 }, (_, index) => ({
-      id: `q-page-2-${index + 1}`,
-      label: `Caregiver Question ${index + 1}`,
-      type: 'Short Text',
-      required: index < 3,
-    })),
+    questions: [
+      { id: 'q-page-2-1', label: 'Relationship to Student', type: 'Dropdown', required: true },
+      { id: 'q-page-2-2', label: 'First Name', type: 'Short Text', required: true },
+      { id: 'q-page-2-3', label: 'Last Name', type: 'Short Text', required: true },
+      { id: 'q-page-2-4', label: 'Email Address', type: 'Email', required: true },
+      { id: 'q-page-2-5', label: 'Phone Number', type: 'Phone', required: true },
+      { id: 'q-page-2-6', label: 'Is this the primary contact?', type: 'Yes/No', required: true },
+      { id: 'q-page-2-7', label: 'Can this person pick up the student?', type: 'Yes/No', required: true },
+    ],
   },
   {
     id: 'page-3',
     title: 'Page 3: Address & Zoning',
     pageTitle: 'Address & Zoning',
-    pageDescription: 'Address details and zone validation',
+    pageDescription: 'Residential address information',
     enabled: true,
     questions: [{ id: 'q-page-3-1', label: 'Home Address', type: 'Address', required: true }],
   },
@@ -58,50 +61,126 @@ const formPages = [
     id: 'page-4',
     title: 'Page 4: Previous School',
     pageTitle: 'Previous School',
-    pageDescription: 'Prior school history and transfer data',
+    pageDescription: 'Information about previous schooling',
     enabled: true,
-    questions: Array.from({ length: 4 }, (_, index) => ({
-      id: `q-page-4-${index + 1}`,
-      label: `Previous School Question ${index + 1}`,
-      type: index === 3 ? 'Date Picker' : 'Short Text',
-      required: index < 2,
-    })),
+    questions: [
+      {
+        id: 'q-page-4-1',
+        label: 'Has the student attended another school?',
+        type: 'Yes/No',
+        required: true,
+        conditional: false,
+      },
+      {
+        id: 'q-page-4-2',
+        label: 'Previous School Name',
+        type: 'Short Text',
+        required: false,
+        conditional: true,
+      },
+      {
+        id: 'q-page-4-3',
+        label: 'Reason for Leaving',
+        type: 'Long Text',
+        required: false,
+        conditional: true,
+      },
+      {
+        id: 'q-page-4-4',
+        label: 'Last Day Attended',
+        type: 'Date Picker',
+        required: false,
+        conditional: true,
+      },
+    ],
   },
   {
     id: 'page-5',
     title: 'Page 5: Medical Information',
     pageTitle: 'Medical Information',
-    pageDescription: 'Health, allergy, and medication details',
+    pageDescription: 'Health and medical details',
     enabled: true,
-    questions: Array.from({ length: 8 }, (_, index) => ({
-      id: `q-page-5-${index + 1}`,
-      label: `Medical Question ${index + 1}`,
-      type: index % 2 === 0 ? 'Short Text' : 'Yes/No',
-      required: index < 4,
-    })),
+    questions: [
+      {
+        id: 'q-page-5-1',
+        label: 'Does the student have any medical conditions?',
+        type: 'Yes/No',
+        required: true,
+        conditional: false,
+      },
+      {
+        id: 'q-page-5-2',
+        label: 'Medical Condition Details',
+        type: 'Long Text',
+        required: false,
+        conditional: true,
+      },
+      {
+        id: 'q-page-5-3',
+        label: 'Does the student have any allergies?',
+        type: 'Yes/No',
+        required: true,
+        conditional: false,
+      },
+      {
+        id: 'q-page-5-4',
+        label: 'Allergy Details',
+        type: 'Long Text',
+        required: false,
+        conditional: true,
+      },
+      {
+        id: 'q-page-5-5',
+        label: 'Current Medications',
+        type: 'Long Text',
+        required: false,
+        conditional: false,
+      },
+      {
+        id: 'q-page-5-6',
+        label: 'Doctor/Medical Centre Name',
+        type: 'Short Text',
+        required: false,
+        conditional: false,
+      },
+      {
+        id: 'q-page-5-7',
+        label: 'Doctor Phone Number',
+        type: 'Phone',
+        required: false,
+        conditional: false,
+      },
+      {
+        id: 'q-page-5-8',
+        label: 'Special Educational Needs',
+        type: 'Long Text',
+        required: false,
+        conditional: false,
+      },
+    ],
   },
   {
     id: 'page-6',
     title: 'Page 6: Documents',
     pageTitle: 'Documents',
-    pageDescription: 'Required supporting files',
+    pageDescription: 'Upload required documents',
     enabled: true,
-    questions: Array.from({ length: 4 }, (_, index) => ({
-      id: `q-page-6-${index + 1}`,
-      label: `Document Upload ${index + 1}`,
-      type: 'File Upload',
-      required: true,
-    })),
+    questions: [
+      { id: 'q-page-6-1', label: 'Birth Certificate', type: 'File Upload', required: true, conditional: false },
+      { id: 'q-page-6-2', label: 'Proof of Address', type: 'File Upload', required: true, conditional: false },
+      { id: 'q-page-6-3', label: 'Immunisation Records', type: 'File Upload', required: false, conditional: false },
+      { id: 'q-page-6-4', label: 'Visa/Immigration Documents', type: 'File Upload', required: false, conditional: false },
+    ],
   },
   {
     id: 'page-7',
     title: 'Page 7: Review & Submit',
     pageTitle: 'Review & Submit',
-    pageDescription: 'Final review and declaration',
+    pageDescription: 'Review your application and submit',
     enabled: true,
     questions: [
-      { id: 'q-page-7-1', label: 'Declaration', type: 'Yes/No', required: true },
-      { id: 'q-page-7-2', label: 'Submit Confirmation', type: 'Yes/No', required: true },
+      { id: 'q-page-7-1', label: 'I confirm that all information provided is accurate', type: 'Yes/No', required: true },
+      { id: 'q-page-7-2', label: "I agree to the school's privacy policy and terms", type: 'Yes/No', required: true },
     ],
   },
 ]
@@ -450,6 +529,9 @@ function AdminFormBuilderPage() {
                                 <span className="admin-form-builder__tag">{question.type}</span>
                                 {question.required ? (
                                   <span className="admin-form-builder__tag admin-form-builder__tag--required">Required</span>
+                                ) : null}
+                                {question.conditional ? (
+                                  <span className="admin-form-builder__tag admin-form-builder__tag--conditional">Conditional</span>
                                 ) : null}
                               </div>
                             </div>
