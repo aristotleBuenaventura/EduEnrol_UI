@@ -18,10 +18,16 @@ function BarChartPanel({ title, bars, max }) {
           ))}
         </div>
         <div className="mini-bar-chart__bars">
-          {bars.map((bar) => (
+          {bars.map((bar, index) => (
             <div key={bar.label} className="mini-bar-chart__bar-group">
               <div className="mini-bar-chart__bar-wrap">
-                <div className="mini-bar-chart__bar" style={{ height: `${(bar.value / computedMax) * 100}%` }} />
+                <div
+                  className="mini-bar-chart__bar"
+                  style={{
+                    height: `${(bar.value / computedMax) * 100}%`,
+                    animationDelay: `${140 + index * 120}ms`,
+                  }}
+                />
               </div>
               <span className="mini-bar-chart__label">{bar.label}</span>
             </div>
