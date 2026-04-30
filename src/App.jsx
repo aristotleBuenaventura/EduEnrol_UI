@@ -8,6 +8,8 @@ import ParentSectionPlaceholder from './pages/parent/ParentSectionPlaceholder.js
 import AdminLayout from './pages/admin/AdminLayout.jsx'
 import AdminDashboardPage from './pages/admin/AdminDashboardPage.jsx'
 import AdminSectionPlaceholder from './pages/admin/AdminSectionPlaceholder.jsx'
+import AdminUsersPage from './pages/admin/AdminUsersPage.jsx'
+import AdminRulesPage from './pages/admin/AdminRulesPage.jsx'
 
 function App() {
   return (
@@ -26,8 +28,8 @@ function App() {
         <Route path="dashboard" element={<AdminDashboardPage />} />
         <Route path="form-builder" element={<AdminSectionPlaceholder />} />
         <Route path="workflow" element={<AdminSectionPlaceholder />} />
-        <Route path="rules" element={<AdminSectionPlaceholder />} />
-        <Route path="users" element={<AdminSectionPlaceholder />} />
+        <Route path="rules" element={<AdminRulesPage />} />
+        <Route path="users" element={<AdminUsersPage />} />
         <Route path="notifications" element={<AdminSectionPlaceholder />} />
         <Route path="settings" element={<AdminSectionPlaceholder />} />
       </Route>

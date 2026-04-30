@@ -6,6 +6,8 @@ import { adminBrand, adminNavItems, adminRoleLabel } from '../../config/navigati
 import { adminUserProfile } from '../../data/adminDashboardDummy.js'
 import '../../styles/parent-shell.css'
 import '../../styles/admin-dashboard.css'
+import '../../styles/admin-users.css'
+import '../../styles/admin-rules.css'
 
 const ADMIN_BASE_PATH = '/admin'
 

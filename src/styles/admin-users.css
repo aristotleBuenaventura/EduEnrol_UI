@@ -1,0 +1,273 @@
+.admin-users {
+  --admin-users-text: #111827;
+  --admin-users-muted: #6b7280;
+  --admin-users-border: #e5e7eb;
+
+  width: 100%;
+}
+
+.admin-users__hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.admin-users__title {
+  margin: 0;
+  color: var(--admin-users-text);
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.admin-users__subtitle {
+  margin: 0.2rem 0 0;
+  color: var(--admin-users-muted);
+  font-size: 0.9rem;
+}
+
+.admin-users__cta {
+  border: none;
+  border-radius: 999px;
+  background: #163a5c;
+  color: #ffffff;
+  min-height: 42px;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.admin-users__cta:hover {
+  background: #122f49;
+}
+
+.admin-users__stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.role-summary-card {
+  border: 1px solid var(--admin-users-border);
+  border-radius: 18px;
+  background: #ffffff;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.role-summary-card__icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+}
+
+.role-summary-card__content {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.role-summary-card__content strong {
+  font-size: 1.9rem;
+  color: #111827;
+}
+
+.role-summary-card__content span {
+  color: #6b7280;
+  font-size: 0.74rem;
+}
+
+.role-summary-card.tone-parent .role-summary-card__icon {
+  background: #ecfeff;
+  color: #0891b2;
+}
+
+.role-summary-card.tone-slt .role-summary-card__icon {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.role-summary-card.tone-manager .role-summary-card__icon {
+  background: #fffbeb;
+  color: #ca8a04;
+}
+
+.role-summary-card.tone-admin .role-summary-card__icon {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.admin-users__table-panel .dashboard-panel__body {
+  min-height: 0;
+}
+
+.user-mgmt-table__wrap {
+  border: 1px solid #eceff3;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.user-mgmt-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.user-mgmt-table th,
+.user-mgmt-table td {
+  padding: 11px 12px;
+  text-align: left;
+}
+
+.user-mgmt-table thead th {
+  font-size: 0.76rem;
+  color: #6b7280;
+  font-weight: 600;
+  border-bottom: 1px solid #eceff3;
+}
+
+.user-mgmt-table tbody tr + tr td {
+  border-top: 1px solid #eceff3;
+}
+
+.user-mgmt-table__user {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.user-mgmt-table__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #475569;
+  font-size: 0.62rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.user-mgmt-table__user strong {
+  display: block;
+  color: #1f2937;
+  font-size: 0.84rem;
+}
+
+.user-mgmt-table__user p {
+  margin: 0.12rem 0 0;
+  color: #6b7280;
+  font-size: 0.72rem;
+}
+
+.user-mgmt-table__role {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.17rem 0.5rem;
+  font-size: 0.67rem;
+  font-weight: 600;
+}
+
+.user-mgmt-table__role.tone-parent {
+  background: #ecfeff;
+  color: #0e7490;
+}
+
+.user-mgmt-table__role.tone-slt {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+.user-mgmt-table__role.tone-manager {
+  background: #fffbeb;
+  color: #a16207;
+}
+
+.user-mgmt-table__role.tone-admin {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.user-mgmt-table__created {
+  color: #4b5563;
+  font-size: 0.8rem;
+}
+
+.user-mgmt-table__toggle {
+  width: 34px;
+  height: 20px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  padding: 1px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-mgmt-table__toggle span {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #94a3b8;
+  transition: transform 0.15s ease;
+}
+
+.user-mgmt-table__toggle.is-on {
+  background: #1f4f79;
+  border-color: #1f4f79;
+}
+
+.user-mgmt-table__toggle.is-on span {
+  background: #ffffff;
+  transform: translateX(14px);
+}
+
+.user-mgmt-table__edit-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: #4b5563;
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+}
+
+.user-mgmt-table__edit-btn:hover {
+  background: #f3f4f6;
+}
+
+@media (max-width: 1080px) {
+  .admin-users__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .admin-users__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .user-mgmt-table__wrap {
+    overflow-x: auto;
+  }
+
+  .user-mgmt-table {
+    min-width: 760px;
+  }
+}
