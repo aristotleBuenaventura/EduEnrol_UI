@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from '../components/ui/Button'
 import Card from '../components/ui/Card'
 import FeatureItem from '../components/ui/FeatureItem'
@@ -9,6 +9,7 @@ import '../App.css'
 
 function LoginPage() {
   const [isRegisterMode, setIsRegisterMode] = useState(false)
+  const navigate = useNavigate()
 
   const featureItems = isRegisterMode
     ? [
@@ -144,9 +145,14 @@ function LoginPage() {
           <p className="self-register-link">
             <Link to="/staff-login">Staff Login</Link>
           </p>
-          <p className="login-demo-link">
-            <Link to="/parent/dashboard">View parent dashboard (demo)</Link>
-          </p>
+          <div className="login-demo-actions">
+            <Button className="login-demo-button" onClick={() => navigate('/parent/dashboard')}>
+              View parent dashboard (demo)
+            </Button>
+            <Button className="login-demo-button" onClick={() => navigate('/admin/dashboard')}>
+              View admin dashboard (demo)
+            </Button>
+          </div>
         </Card>
       </main>
     </div>

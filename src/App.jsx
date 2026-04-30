@@ -5,6 +5,9 @@ import ParentLayout from './pages/parent/ParentLayout.jsx'
 import ParentDashboardPage from './pages/parent/ParentDashboardPage.jsx'
 import ParentEnrolStudentPage from './pages/parent/ParentEnrolStudentPage.jsx'
 import ParentSectionPlaceholder from './pages/parent/ParentSectionPlaceholder.jsx'
+import AdminLayout from './pages/admin/AdminLayout.jsx'
+import AdminDashboardPage from './pages/admin/AdminDashboardPage.jsx'
+import AdminSectionPlaceholder from './pages/admin/AdminSectionPlaceholder.jsx'
 
 function App() {
   return (
@@ -17,6 +20,16 @@ function App() {
         <Route path="enrol-student" element={<ParentEnrolStudentPage />} />
         <Route path="applications" element={<ParentSectionPlaceholder />} />
         <Route path="notifications" element={<ParentSectionPlaceholder />} />
+      </Route>
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<AdminDashboardPage />} />
+        <Route path="form-builder" element={<AdminSectionPlaceholder />} />
+        <Route path="workflow" element={<AdminSectionPlaceholder />} />
+        <Route path="rules" element={<AdminSectionPlaceholder />} />
+        <Route path="users" element={<AdminSectionPlaceholder />} />
+        <Route path="notifications" element={<AdminSectionPlaceholder />} />
+        <Route path="settings" element={<AdminSectionPlaceholder />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

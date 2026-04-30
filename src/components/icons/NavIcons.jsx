@@ -174,3 +174,51 @@ export function IconUpload(props) {
   )
 }
 
+export function IconWorkflow(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <circle cx="5" cy="6" r="2" />
+      <circle cx="19" cy="6" r="2" />
+      <circle cx="12" cy="18" r="2" />
+      <path d="M7 6h10M6.7 7.5 11 16M17.3 7.5 13 16" />
+    </svg>
+  )
+}
+
+export function IconShield(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <path d="M12 3 19 6v5.8c0 4.2-2.9 8.1-7 9.6-4.1-1.5-7-5.4-7-9.6V6l7-3Z" />
+      <path d="m9.6 12 1.7 1.7 3.2-3.2" />
+    </svg>
+  )
+}
+
+export function IconUsers(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <circle cx="9" cy="8" r="3" />
+      <circle cx="17" cy="10" r="2.6" />
+      <path d="M3.5 19c0-2.5 2.5-4.5 5.5-4.5s5.5 2 5.5 4.5M13 18.5c0-1.8 1.8-3.3 4-3.3 1.8 0 3.2 1 3.8 2.3" />
+    </svg>
+  )
+}
+
+export function IconSettings(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <circle cx="12" cy="12" r="2.8" />
+      <path d="M19.4 15a1 1 0 0 0 .2 1.1l.1.1a1.1 1.1 0 0 1 0 1.6l-1 1a1.1 1.1 0 0 1-1.6 0l-.1-.1a1 1 0 0 0-1.1-.2 1 1 0 0 0-.6.9v.2a1.1 1.1 0 0 1-1.1 1.1h-1.4a1.1 1.1 0 0 1-1.1-1.1v-.2a1 1 0 0 0-.6-.9 1 1 0 0 0-1.1.2l-.1.1a1.1 1.1 0 0 1-1.6 0l-1-1a1.1 1.1 0 0 1 0-1.6l.1-.1a1 1 0 0 0 .2-1.1 1 1 0 0 0-.9-.6h-.2a1.1 1.1 0 0 1-1.1-1.1v-1.4a1.1 1.1 0 0 1 1.1-1.1h.2a1 1 0 0 0 .9-.6 1 1 0 0 0-.2-1.1l-.1-.1a1.1 1.1 0 0 1 0-1.6l1-1a1.1 1.1 0 0 1 1.6 0l.1.1a1 1 0 0 0 1.1.2h.1a1 1 0 0 0 .6-.9V4.5a1.1 1.1 0 0 1 1.1-1.1h1.4a1.1 1.1 0 0 1 1.1 1.1v.2a1 1 0 0 0 .6.9 1 1 0 0 0 1.1-.2l.1-.1a1.1 1.1 0 0 1 1.6 0l1 1a1.1 1.1 0 0 1 0 1.6l-.1.1a1 1 0 0 0-.2 1.1v.1a1 1 0 0 0 .9.6h.2a1.1 1.1 0 0 1 1.1 1.1v1.4a1.1 1.1 0 0 1-1.1 1.1h-.2a1 1 0 0 0-.9.6Z" />
+    </svg>
+  )
+}
+
+export function IconWarning(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <path d="M12 4 3.8 18h16.4L12 4Z" />
+      <path d="M12 9v4M12 16h.01" />
+    </svg>
+  )
+}
+
