@@ -4,6 +4,7 @@ import DonutBreakdownPanel from '../../components/dashboard/DonutBreakdownPanel.
 import IntegrationStatusPanel from '../../components/dashboard/IntegrationStatusPanel.jsx'
 import RecentApplicationsPanel from '../../components/dashboard/RecentApplicationsPanel.jsx'
 import RuleViolationsPanel from '../../components/dashboard/RuleViolationsPanel.jsx'
+import { useNavigate } from 'react-router-dom'
 import {
   IconArrowRight,
   IconCheck,
@@ -29,6 +30,8 @@ const metricIconByName = {
 }
 
 function AdminDashboardPage() {
+  const navigate = useNavigate()
+
   return (
     <div className="admin-dashboard">
       <header className="admin-dashboard__hero">
@@ -36,7 +39,7 @@ function AdminDashboardPage() {
           <h1 className="admin-dashboard__title">Admin Dashboard</h1>
           <p className="admin-dashboard__subtitle">Overview of all enrolment activities</p>
         </div>
-        <button type="button" className="admin-dashboard__cta">
+        <button type="button" className="admin-dashboard__cta" onClick={() => navigate('/admin/form-builder')}>
           Manage Forms
           <IconArrowRight width={16} height={16} />
         </button>
