@@ -1,0 +1,213 @@
+.admin-settings {
+  --admin-settings-text: #111827;
+  --admin-settings-muted: #6b7280;
+  --admin-settings-border: #e5e7eb;
+  --admin-settings-accent: #163a5c;
+  --admin-settings-accent-hover: #122f49;
+
+  width: 100%;
+}
+
+.admin-settings__hero {
+  margin-bottom: 1.25rem;
+}
+
+.admin-settings__title {
+  margin: 0;
+  color: var(--admin-settings-text);
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.admin-settings__subtitle {
+  margin: 0.35rem 0 0;
+  color: var(--admin-settings-muted);
+  font-size: 0.9rem;
+}
+
+.admin-settings__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-settings__card {
+  border: 1px solid var(--admin-settings-border);
+  border-radius: 18px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.admin-settings__card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.15rem 0.65rem;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.admin-settings__card-icon {
+  display: grid;
+  place-items: center;
+  color: var(--admin-settings-accent);
+  flex-shrink: 0;
+}
+
+.admin-settings__card-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--admin-settings-text);
+}
+
+.admin-settings__card-body {
+  padding: 1rem 1.15rem 1.15rem;
+}
+
+.admin-settings__card-body--flush {
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+}
+
+.admin-settings__field-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--admin-settings-muted);
+  margin-bottom: 0.45rem;
+}
+
+.admin-settings__input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--admin-settings-border);
+  border-radius: 12px;
+  background: #f9fafb;
+  color: var(--admin-settings-text);
+  font-size: 0.95rem;
+  padding: 0.65rem 0.85rem;
+  min-height: 44px;
+}
+
+.admin-settings__input:focus {
+  outline: 2px solid rgba(22, 58, 92, 0.35);
+  outline-offset: 1px;
+  border-color: #c5ced6;
+  background: #ffffff;
+}
+
+.admin-settings__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.admin-settings__btn-primary {
+  border: none;
+  border-radius: 12px;
+  background: var(--admin-settings-accent);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.6rem 1.15rem;
+  min-height: 42px;
+  cursor: pointer;
+}
+
+.admin-settings__btn-primary:hover {
+  background: var(--admin-settings-accent-hover);
+}
+
+.admin-settings__btn-primary:focus-visible {
+  outline: 2px solid var(--admin-settings-accent);
+  outline-offset: 2px;
+}
+
+.admin-settings__save-hint {
+  font-size: 0.8rem;
+  color: #059669;
+  font-weight: 500;
+}
+
+.admin-settings__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid #f0f2f5;
+}
+
+.admin-settings__card-body--flush .admin-settings__row:first-child {
+  border-top: none;
+}
+
+.admin-settings__row-text {
+  min-width: 0;
+}
+
+.admin-settings__row-label {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--admin-settings-text);
+}
+
+.admin-settings__row-hint {
+  margin: 0.2rem 0 0;
+  font-size: 0.78rem;
+  color: var(--admin-settings-muted);
+  line-height: 1.35;
+}
+
+.admin-settings__switch {
+  position: relative;
+  flex-shrink: 0;
+  width: 48px;
+  height: 28px;
+  border-radius: 999px;
+  border: none;
+  padding: 0;
+  background: #d1d5db;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.admin-settings__switch.is-on {
+  background: var(--admin-settings-accent);
+}
+
+.admin-settings__switch:focus-visible {
+  outline: 2px solid var(--admin-settings-accent);
+  outline-offset: 2px;
+}
+
+.admin-settings__switch-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: left 0.18s ease;
+}
+
+.admin-settings__switch.is-on .admin-settings__switch-thumb {
+  left: 23px;
+}
+
+.admin-settings__switch-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

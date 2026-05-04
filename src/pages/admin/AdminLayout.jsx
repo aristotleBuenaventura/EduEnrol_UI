@@ -9,6 +9,7 @@ import '../../styles/admin-dashboard.css'
 import '../../styles/admin-users.css'
 import '../../styles/admin-rules.css'
 import '../../styles/admin-form-builder.css'
+import '../../styles/admin-settings.css'
 
 const ADMIN_BASE_PATH = '/admin'
 
