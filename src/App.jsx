@@ -12,6 +12,7 @@ import AdminUsersPage from './pages/admin/AdminUsersPage.jsx'
 import AdminRulesPage from './pages/admin/AdminRulesPage.jsx'
 import AdminFormBuilderPage from './pages/admin/AdminFormBuilderPage.jsx'
 import AdminSettingsPage from './pages/admin/AdminSettingsPage.jsx'
+import AdminNotificationsPage from './pages/admin/AdminNotificationsPage.jsx'
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
         <Route path="workflow" element={<AdminSectionPlaceholder />} />
         <Route path="rules" element={<AdminRulesPage />} />
         <Route path="users" element={<AdminUsersPage />} />
-        <Route path="notifications" element={<AdminSectionPlaceholder />} />
+        <Route path="notifications" element={<AdminNotificationsPage />} />
         <Route path="settings" element={<AdminSettingsPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
