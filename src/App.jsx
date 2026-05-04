@@ -30,7 +30,8 @@ function App() {
         <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="dashboard" element={<AdminDashboardPage />} />
         <Route path="form-builder" element={<AdminFormBuilderPage />} />
-        <Route path="workflow" element={<AdminSectionPlaceholder />} />
+        <Route path="workflow" element={<Navigate to="register-school" replace />} />
+        <Route path="register-school" element={<AdminSectionPlaceholder />} />
         <Route path="rules" element={<AdminRulesPage />} />
         <Route path="users" element={<AdminUsersPage />} />
         <Route path="notifications" element={<AdminNotificationsPage />} />

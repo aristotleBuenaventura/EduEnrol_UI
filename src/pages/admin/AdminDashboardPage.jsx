@@ -64,7 +64,7 @@ function AdminDashboardPage() {
       </section>
 
       <section className="admin-dashboard__grid admin-dashboard__grid--bottom">
-        <RecentApplicationsPanel title="Recent Applications" actionTo="/admin/workflow" items={adminRecentApplications} />
+        <RecentApplicationsPanel title="Recent Applications" actionTo="/admin/register-school" items={adminRecentApplications} />
         <RuleViolationsPanel
           title="Rule Violations"
           items={adminRuleViolations}

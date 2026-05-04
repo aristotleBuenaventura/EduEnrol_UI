@@ -8,7 +8,7 @@ import { IconChevronLeft, IconChevronRight, IconGradCap, IconSignOut } from '../
  * @param {object} props
  * @param {{ title: string, subtitle?: string }} props.brand
  * @param {string} props.roleLabel
- * @param {{ id: string, label: string, path: string, icon: string }[]} props.items
+ * @param {{ id: string, label: string, path: string, icon: string, subLabel?: string }[]} props.items
  * @param {{ fullName: string, email: string, initials: string }} props.user
  * @param {string} props.basePath — e.g. "/parent" (no trailing slash)
  * @param {boolean} props.collapsed

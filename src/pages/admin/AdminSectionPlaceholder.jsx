@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom'
 
 const TITLE_BY_PATH = {
   '/admin/form-builder': 'Form Builder',
-  '/admin/workflow': 'Workflow',
+  '/admin/register-school': 'Register School',
   '/admin/rules': 'Rules',
   '/admin/users': 'Users',
   '/admin/notifications': 'Notifications',

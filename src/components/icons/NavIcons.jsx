@@ -185,6 +185,17 @@ export function IconWorkflow(props) {
   )
 }
 
+/** School building — used for Register School in admin nav */
+export function IconSchool(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <path d="M4 21V11l8-5 8 5v10" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9 21v-6h6v6" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="12" cy="13" r="1.35" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
 export function IconShield(props) {
   return (
     <svg {...iconProps} {...props}>
