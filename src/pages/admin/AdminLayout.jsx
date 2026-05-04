@@ -11,6 +11,7 @@ import '../../styles/admin-rules.css'
 import '../../styles/admin-form-builder.css'
 import '../../styles/admin-settings.css'
 import '../../styles/admin-notifications.css'
+import '../../styles/admin-register-school.css'
 
 const ADMIN_BASE_PATH = '/admin'
 
