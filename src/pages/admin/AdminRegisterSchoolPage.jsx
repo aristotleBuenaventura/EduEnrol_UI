@@ -3,10 +3,15 @@ import { IconArrowRight, IconCheck, IconSearch, IconSchool } from '../../compone
 import { adminUserProfile } from '../../data/adminDashboardDummy.js'
 import { searchMoeSampleSchools } from '../../data/registerSchoolMoeSample.js'
 
-const STEPS = [
+const STEPS_MOE = [
   { id: 1, label: 'Find school' },
   { id: 2, label: 'School details' },
   { id: 3, label: 'Confirm address' },
+]
+
+const STEPS_MANUAL = [
+  { id: 1, label: 'Find school' },
+  { id: 2, label: 'Enter school details' },
 ]
 
 function IconSchoolLarge(props) {
@@ -38,6 +43,7 @@ function IconInfo(props) {
 
 function initialWizardState() {
   return {
+    flow: 'moe',
     step: 1,
     successPhase: false,
     schoolNameInput: '',
@@ -100,20 +106,23 @@ function AdminRegisterSchoolPage() {
   }
 
   const handleManualEntry = () => {
-    const name = wizard.schoolNameInput.trim() || 'School'
+    const seedName = wizard.schoolNameInput.trim()
     updateWizard({
+      flow: 'manual',
+      step: 2,
       showNoResults: false,
       searchPerformed: false,
       moeResults: [],
-      selectedResultId: 'manual',
-      selectedSchool: {
-        id: 'manual',
-        name,
-        location: '',
-        moeNumber: '—',
-        isManual: true,
-      },
-      step: 2,
+      selectedResultId: null,
+      selectedSchool: null,
+      principalName: '',
+      schoolType: '',
+      rollSize: '',
+      confirmSchoolName: seedName,
+      street: '',
+      suburb: '',
+      city: '',
+      postcode: '',
     })
   }
 
@@ -124,12 +133,14 @@ function AdminRegisterSchoolPage() {
     wizard.schoolType.trim().length > 0 &&
     wizard.rollSize.trim().length > 0
 
-  const step3CanSubmit =
+  const addressFormComplete =
     wizard.confirmSchoolName.trim().length > 0 &&
     wizard.street.trim().length > 0 &&
     wizard.suburb.trim().length > 0 &&
     wizard.city.trim().length > 0 &&
     wizard.postcode.trim().length > 0
+
+  const step3CanSubmit = addressFormComplete
 
   const goNextFromStep1 = () => {
     if (!step1CanNext) return
@@ -142,7 +153,7 @@ function AdminRegisterSchoolPage() {
     updateWizard({
       step: 3,
       confirmSchoolName: s?.name ?? '',
-      city: s?.isManual ? '' : s?.location || 'Auckland',
+      city: s?.location || 'Auckland',
       street: '',
       suburb: '',
       postcode: '',
@@ -156,17 +167,18 @@ function AdminRegisterSchoolPage() {
       return
     }
     if (wizard.step === 2) {
-      if (wizard.selectedSchool?.isManual) {
+      if (wizard.flow === 'manual') {
         updateWizard({
+          flow: 'moe',
           step: 1,
-          selectedSchool: null,
-          selectedResultId: null,
           showNoResults: true,
           searchPerformed: true,
           moeResults: [],
-          principalName: '',
-          schoolType: '',
-          rollSize: '',
+          confirmSchoolName: '',
+          street: '',
+          suburb: '',
+          city: 'Auckland',
+          postcode: '',
         })
         return
       }
@@ -179,21 +191,27 @@ function AdminRegisterSchoolPage() {
   }
 
   const handleSubmitRegistration = () => {
+    if (wizard.flow === 'manual' && wizard.step === 2) {
+      if (!addressFormComplete) return
+      updateWizard({ successPhase: true })
+      return
+    }
+    if (wizard.step !== 3) return
     if (!step3CanSubmit) return
     updateWizard({ successPhase: true })
   }
 
   const handleSuccessOkay = () => {
+    const name = wizard.confirmSchoolName.trim()
+    if (!name) return
     const s = wizard.selectedSchool
-    if (!s) return
-    const subtitle = s.isManual
-      ? `${wizard.city.trim()} • Manual`
-      : `${s.location} • MOE #${s.moeNumber}`
+    const subtitle =
+      wizard.flow === 'manual' || !s ? `${wizard.city.trim()} • Manual` : `${s.location} • MOE #${s.moeNumber}`
     setLinkedSchools((prev) => [
       ...prev,
       {
         id: `school-${Date.now()}`,
-        name: wizard.confirmSchoolName.trim(),
+        name,
         subtitle,
         linkedEmail: adminUserProfile.email,
       },
@@ -206,10 +224,11 @@ function AdminRegisterSchoolPage() {
 
   const stepper = useMemo(() => {
     if (!wizardActive || wizard.successPhase) return null
+    const steps = wizard.flow === 'manual' ? STEPS_MANUAL : STEPS_MOE
     return (
       <div className="register-school__stepper" aria-label="Registration progress">
         <div className="register-school__stepper-inner">
-          {STEPS.flatMap((s, index) => {
+          {steps.flatMap((s, index) => {
             const done = wizard.step > s.id
             const active = wizard.step === s.id
             const stepEl = (
@@ -235,7 +254,7 @@ function AdminRegisterSchoolPage() {
         </div>
       </div>
     )
-  }, [wizardActive, wizard.successPhase, wizard.step])
+  }, [wizardActive, wizard.successPhase, wizard.flow, wizard.step])
 
   const pageTitle = 'Register School'
   const pageSubtitle = 'Link a school to your administrator account so you can manage its enrolments.'
@@ -414,6 +433,102 @@ function AdminRegisterSchoolPage() {
     </section>
   )
 
+  const renderManualAddressStep = () => (
+    <section className="register-school__card">
+      <header className="register-school__card-head register-school__card-head--plain">
+        <h2 className="register-school__card-title">Enter school name &amp; address</h2>
+      </header>
+      <div className="register-school__card-body">
+        <p className="register-school__helper" style={{ marginTop: 0, marginBottom: '1rem' }}>
+          This school wasn&apos;t found in the zoning database. Please enter its details manually so it can be registered.
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+          <div>
+            <label className="register-school__label" htmlFor="rs-manual-name">
+              School name <span className="req">*</span>
+            </label>
+            <input
+              id="rs-manual-name"
+              type="text"
+              className="register-school__input"
+              value={wizard.confirmSchoolName}
+              onChange={(e) => updateWizard({ confirmSchoolName: e.target.value })}
+              autoComplete="organization"
+            />
+          </div>
+          <div>
+            <label className="register-school__label" htmlFor="rs-manual-street">
+              Street address <span className="req">*</span>
+            </label>
+            <input
+              id="rs-manual-street"
+              type="text"
+              className="register-school__input"
+              value={wizard.street}
+              onChange={(e) => updateWizard({ street: e.target.value })}
+              autoComplete="street-address"
+            />
+          </div>
+          <div className="register-school__grid2">
+            <div>
+              <label className="register-school__label" htmlFor="rs-manual-suburb">
+                Suburb <span className="req">*</span>
+              </label>
+              <input
+                id="rs-manual-suburb"
+                type="text"
+                className="register-school__input"
+                value={wizard.suburb}
+                onChange={(e) => updateWizard({ suburb: e.target.value })}
+              />
+            </div>
+            <div>
+              <label className="register-school__label" htmlFor="rs-manual-city">
+                City <span className="req">*</span>
+              </label>
+              <input
+                id="rs-manual-city"
+                type="text"
+                className="register-school__input"
+                value={wizard.city}
+                onChange={(e) => updateWizard({ city: e.target.value })}
+              />
+            </div>
+          </div>
+          <div>
+            <label className="register-school__label" htmlFor="rs-manual-post">
+              Postcode <span className="req">*</span>
+            </label>
+            <input
+              id="rs-manual-post"
+              type="text"
+              className="register-school__input"
+              value={wizard.postcode}
+              onChange={(e) => updateWizard({ postcode: e.target.value })}
+              autoComplete="postal-code"
+            />
+          </div>
+        </div>
+        {!addressFormComplete ? (
+          <p className="register-school__validation">Please complete all required fields before submitting.</p>
+        ) : null}
+        <div className="register-school__footer">
+          <button type="button" className="register-school__btn register-school__btn--ghost" onClick={goBack}>
+            ← Back
+          </button>
+          <button
+            type="button"
+            className="register-school__btn register-school__btn--primary"
+            disabled={!addressFormComplete}
+            onClick={handleSubmitRegistration}
+          >
+            Submit registration
+          </button>
+        </div>
+      </div>
+    </section>
+  )
+
   const renderStep2 = () => {
     const s = wizard.selectedSchool
     return (
@@ -423,29 +538,14 @@ function AdminRegisterSchoolPage() {
         </header>
         <div className="register-school__card-body">
           <p className="register-school__helper" style={{ marginTop: 0, marginBottom: '0.85rem' }}>
-            {s?.isManual ? (
-              <>
-                Registering: <strong>{s.name}</strong> (manual entry)
-              </>
-            ) : (
-              <>
-                Found in zoning database: <strong>{s?.name}</strong>
-              </>
-            )}
+            Found in zoning database: <strong>{s?.name}</strong>
           </p>
-          {!s?.isManual ? (
-            <div className="register-school__info-banner">
-              <IconInfo style={{ flexShrink: 0, color: '#163a5c' }} />
-              <span>
-                School name and address have been auto-loaded from the MOE zoning database. Just add a few extra details below.
-              </span>
-            </div>
-          ) : (
-            <div className="register-school__info-banner">
-              <IconInfo style={{ flexShrink: 0, color: '#163a5c' }} />
-              <span>Complete the details below. You will confirm the full address in the next step.</span>
-            </div>
-          )}
+          <div className="register-school__info-banner">
+            <IconInfo style={{ flexShrink: 0, color: '#163a5c' }} />
+            <span>
+              School name and address have been auto-loaded from the MOE zoning database. Just add a few extra details below.
+            </span>
+          </div>
           <div className="register-school__grid2">
             <div>
               <label className="register-school__label" htmlFor="rs-principal">
@@ -605,7 +705,8 @@ function AdminRegisterSchoolPage() {
         <>
           {stepper}
           {wizard.step === 1 ? renderStep1() : null}
-          {wizard.step === 2 ? renderStep2() : null}
+          {wizard.step === 2 && wizard.flow === 'manual' ? renderManualAddressStep() : null}
+          {wizard.step === 2 && wizard.flow === 'moe' ? renderStep2() : null}
           {wizard.step === 3 ? renderStep3() : null}
         </>
       ) : null}
