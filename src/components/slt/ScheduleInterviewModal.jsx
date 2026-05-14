@@ -1,18 +1,7 @@
 import { useEffect, useId, useState } from 'react'
 import { IconCalendar, IconClock, IconX } from '../icons/NavIcons.jsx'
+import ScheduleInterviewDateField from './ScheduleInterviewDateField.jsx'
 import '../../styles/schedule-interview-modal.css'
-
-function formatInterviewDate(isoDate) {
-  if (!isoDate?.trim()) return ''
-  const d = new Date(`${isoDate}T12:00:00`)
-  if (Number.isNaN(d.getTime())) return ''
-  return d.toLocaleDateString('en-NZ', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
-}
 
 /**
  * @param {object} props
@@ -40,7 +29,6 @@ function ScheduleInterviewModal({ isOpen, onClose, onConfirm }) {
   if (!isOpen) return null
 
   const dateSelected = Boolean(interviewDate?.trim())
-  const dateLabel = formatInterviewDate(interviewDate)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -77,21 +65,14 @@ function ScheduleInterviewModal({ isOpen, onClose, onConfirm }) {
             <label className="schedule-interview-modal__label" htmlFor="slt-schedule-date">
               Interview Date
             </label>
-            <div className="schedule-interview-modal__control schedule-interview-modal__control--date">
-              <span className="schedule-interview-modal__control-icon" aria-hidden="true">
-                <IconCalendar width={20} height={20} />
-              </span>
-              <input
-                id="slt-schedule-date"
-                className="schedule-interview-modal__input schedule-interview-modal__input--date"
-                type="date"
-                value={interviewDate}
-                onChange={(e) => setInterviewDate(e.target.value)}
-                aria-describedby="slt-schedule-date-hint"
-              />
-            </div>
+            <ScheduleInterviewDateField
+              id="slt-schedule-date"
+              value={interviewDate}
+              onChange={setInterviewDate}
+              hintId="slt-schedule-date-hint"
+            />
             <p id="slt-schedule-date-hint" className="schedule-interview-modal__hint">
-              {dateLabel || 'Choose a date from the calendar.'}
+              {dateSelected ? 'Tap the date field above to change your selection.' : 'Open the calendar and choose an interview date.'}
             </p>
           </div>
 
@@ -134,7 +115,7 @@ function ScheduleInterviewModal({ isOpen, onClose, onConfirm }) {
             <textarea
               id="slt-schedule-notes"
               className="schedule-interview-modal__textarea"
-              rows={3}
+              rows={2}
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Any details for the parent or panel..."
