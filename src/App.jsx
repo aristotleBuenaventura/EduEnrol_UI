@@ -22,7 +22,7 @@ import ManagerHomePage from './pages/manager/ManagerHomePage.jsx'
 import ManagerApplicationsPage from './pages/manager/ManagerApplicationsPage.jsx'
 import ManagerTaskQueuePage from './pages/manager/ManagerTaskQueuePage.jsx'
 import ManagerAssignmentsPage from './pages/manager/ManagerAssignmentsPage.jsx'
-import ManagerSectionPlaceholder from './pages/manager/ManagerSectionPlaceholder.jsx'
+import ManagerReportsPage from './pages/manager/ManagerReportsPage.jsx'
 
 function App() {
   return (
@@ -49,7 +49,7 @@ function App() {
         <Route path="applications" element={<ManagerApplicationsPage />} />
         <Route path="task-queue" element={<ManagerTaskQueuePage />} />
         <Route path="assignments" element={<ManagerAssignmentsPage />} />
-        <Route path="reports" element={<ManagerSectionPlaceholder />} />
+        <Route path="reports" element={<ManagerReportsPage />} />
       </Route>
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<Navigate to="dashboard" replace />} />

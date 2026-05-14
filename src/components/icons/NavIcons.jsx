@@ -276,6 +276,15 @@ export function IconBarChart(props) {
   )
 }
 
+/** Simple X icon — e.g. Declined KPI on manager reports */
+export function IconX(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <path d="M16 8 8 16M8 8l8 8" />
+    </svg>
+  )
+}
+
 export function IconEye(props) {
   return (
     <svg {...iconProps} {...props}>
