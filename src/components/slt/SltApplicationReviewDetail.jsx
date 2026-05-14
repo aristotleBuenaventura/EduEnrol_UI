@@ -163,27 +163,33 @@ function SltApplicationReviewDetail({
         </div>
       </div>
 
-      <footer className="slt-rq-detail__actions">
-        <button type="button" className="slt-rq-action slt-rq-action--ghost" onClick={onRequestInfo}>
-          Request Info
-        </button>
-        {canScheduleInterview ? (
-          <button type="button" className="slt-rq-action slt-rq-action--ghost" onClick={onOpenScheduleInterview}>
-            <IconCalendar width={18} height={18} aria-hidden="true" />
-            Schedule Interview
-          </button>
-        ) : null}
-        <button type="button" className="slt-rq-action slt-rq-action--approve" onClick={onApprove}>
-          <IconCheck width={18} height={18} aria-hidden="true" />
-          Approve
-        </button>
-        <button type="button" className="slt-rq-action slt-rq-action--waitlist" onClick={onWaitlist}>
-          <IconClock width={18} height={18} aria-hidden="true" />
-          Waitlist
-        </button>
-        <button type="button" className="slt-rq-action slt-rq-action--decline" onClick={onDecline}>
-          Decline
-        </button>
+      <footer className="slt-rq-detail__actions-wrap">
+        <div className="slt-rq-detail__actions">
+          <div className="slt-rq-detail__actions-left">
+            <button type="button" className="slt-rq-action slt-rq-action--ghost" onClick={onRequestInfo}>
+              Request Info
+            </button>
+            {canScheduleInterview ? (
+              <button type="button" className="slt-rq-action slt-rq-action--ghost" onClick={onOpenScheduleInterview}>
+                <IconCalendar width={18} height={18} aria-hidden="true" />
+                Schedule Interview
+              </button>
+            ) : null}
+          </div>
+          <div className="slt-rq-detail__actions-right">
+            <button type="button" className="slt-rq-action slt-rq-action--approve" onClick={onApprove}>
+              <IconCheck width={18} height={18} aria-hidden="true" />
+              Approve
+            </button>
+            <button type="button" className="slt-rq-action slt-rq-action--ghost" onClick={onWaitlist}>
+              <IconClock width={18} height={18} aria-hidden="true" />
+              Waitlist
+            </button>
+            <button type="button" className="slt-rq-action slt-rq-action--decline" onClick={onDecline}>
+              Decline
+            </button>
+          </div>
+        </div>
       </footer>
     </div>
   )
