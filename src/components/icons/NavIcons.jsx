@@ -173,6 +173,16 @@ export function IconMail(props) {
   )
 }
 
+/** Speech bubble — e.g. add note / comment actions */
+export function IconMessageCircle(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-2.9-.4-4.1-1.1L3 21l1.9-5.7a8.4 8.4 0 0 1-1.4-4.3A8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5Z" />
+      <path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01" strokeLinecap="round" />
+    </svg>
+  )
+}
+
 export function IconPhone(props) {
   return (
     <svg {...iconProps} {...props}>

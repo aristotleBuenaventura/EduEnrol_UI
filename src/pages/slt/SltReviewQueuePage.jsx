@@ -143,15 +143,54 @@ function SltReviewQueuePage() {
     setRequestInfoModalItemId(null)
   }, [])
 
+  const appendQueueNote = useCallback((rowId, note) => {
+    setQueue((q) =>
+      q.map((row) =>
+        row.id === rowId
+          ? {
+              ...row,
+              detail: {
+                ...row.detail,
+                notes: [note, ...(row.detail.notes ?? [])],
+              },
+            }
+          : row,
+      ),
+    )
+  }, [])
+
+  const handleAddNote = useCallback(
+    (rowId, body) => {
+      const trimmed = body.trim()
+      if (!trimmed) return
+      appendQueueNote(rowId, {
+        id: crypto.randomUUID(),
+        authorName: 'Current User',
+        createdAt: new Date().toISOString(),
+        body: trimmed,
+      })
+    },
+    [appendQueueNote],
+  )
+
   const handleSendRequestInfo = useCallback(
-    ({ to }) => {
+    ({ to, subject, message }) => {
+      const rowId = requestInfoModalItemId
+      if (rowId == null) return
+      const noteBody = ['Information request sent to ' + to, 'Subject: ' + subject, '', message].join('\n')
+      appendQueueNote(rowId, {
+        id: crypto.randomUUID(),
+        authorName: 'Current User',
+        createdAt: new Date().toISOString(),
+        body: noteBody,
+      })
       setRequestInfoModalItemId(null)
       pushToast({
         title: 'Email sent to caregiver',
         description: `Sent to ${to}`,
       })
     },
-    [pushToast],
+    [appendQueueNote, pushToast, requestInfoModalItemId],
   )
 
   const closeScheduleModal = useCallback(() => {
@@ -197,6 +236,7 @@ function SltReviewQueuePage() {
               onApprove={handleApprove}
               onWaitlist={handleWaitlist}
               onDecline={handleDecline}
+              onAddNote={(body) => handleAddNote(selectedItem.id, body)}
             />
           ) : (
             <div className="slt-rq-right-card">

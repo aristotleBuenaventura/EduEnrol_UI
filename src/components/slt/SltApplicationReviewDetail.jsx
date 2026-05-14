@@ -1,18 +1,18 @@
 import { useMemo, useState } from 'react'
 import EnrollmentStatusPill from '../dashboard/EnrollmentStatusPill.jsx'
 import DetailFieldGrid from '../ui/DetailFieldGrid.jsx'
+import SltApplicationDocumentsList from './SltApplicationDocumentsList.jsx'
+import SltApplicationTimelineList from './SltApplicationTimelineList.jsx'
+import SltApplicationNotesPanel from './SltApplicationNotesPanel.jsx'
 import {
   IconCalendar,
   IconCheck,
   IconClock,
-  IconDocument,
   IconMail,
   IconMapPin,
   IconPhone,
-  IconPencil,
   IconUser,
   IconUsers,
-  IconWorkflow,
 } from '../icons/NavIcons.jsx'
 import '../../styles/enrollment-pills.css'
 import '../../styles/detail-field-grid.css'
@@ -32,6 +32,7 @@ const TABS = [
  * @param {() => void} props.onApprove
  * @param {() => void} props.onWaitlist
  * @param {() => void} props.onDecline
+ * @param {(body: string) => void} props.onAddNote
  */
 function SltApplicationReviewDetail({
   item,
@@ -40,6 +41,7 @@ function SltApplicationReviewDetail({
   onApprove,
   onWaitlist,
   onDecline,
+  onAddNote,
 }) {
   const [activeTab, setActiveTab] = useState('student')
   const { detail } = item
@@ -148,30 +150,15 @@ function SltApplicationReviewDetail({
           ) : null}
 
           {activeTab === 'documents' ? (
-            <section className="slt-rq-detail-card slt-rq-detail-card--placeholder" aria-label="Documents">
-              <span className="slt-rq-detail-card__placeholder-icon" aria-hidden="true">
-                <IconDocument width={36} height={36} />
-              </span>
-              <p className="slt-rq-detail-card__placeholder-text">No documents attached for this application.</p>
-            </section>
+            <SltApplicationDocumentsList documents={detail.documents ?? []} />
           ) : null}
 
           {activeTab === 'timeline' ? (
-            <section className="slt-rq-detail-card slt-rq-detail-card--placeholder" aria-label="Timeline">
-              <span className="slt-rq-detail-card__placeholder-icon" aria-hidden="true">
-                <IconWorkflow width={36} height={36} />
-              </span>
-              <p className="slt-rq-detail-card__placeholder-text">Timeline events will appear here.</p>
-            </section>
+            <SltApplicationTimelineList events={detail.timeline ?? []} />
           ) : null}
 
           {activeTab === 'notes' ? (
-            <section className="slt-rq-detail-card slt-rq-detail-card--placeholder" aria-label="Notes">
-              <span className="slt-rq-detail-card__placeholder-icon" aria-hidden="true">
-                <IconPencil width={36} height={36} />
-              </span>
-              <p className="slt-rq-detail-card__placeholder-text">No internal notes yet.</p>
-            </section>
+            <SltApplicationNotesPanel notes={detail.notes ?? []} onAddNote={onAddNote} />
           ) : null}
         </div>
       </div>
