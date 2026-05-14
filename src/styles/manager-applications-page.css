@@ -1,0 +1,100 @@
+/* Manager Applications tab page */
+
+.manager-apps-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.manager-apps-page__hero {
+  margin-bottom: 22px;
+}
+
+.manager-apps-page__title {
+  margin: 0;
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.manager-apps-page__subtitle {
+  margin: 8px 0 0;
+  font-size: 0.94rem;
+  color: #6b7280;
+  line-height: 1.45;
+  font-weight: 400;
+}
+
+.manager-apps-page__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 14px;
+  margin-bottom: 22px;
+}
+
+.manager-apps-page__search {
+  flex: 1 1 220px;
+  min-width: min(100%, 220px);
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 8px 14px;
+  min-height: 40px;
+}
+
+.manager-apps-page__search:focus-within {
+  border-color: rgba(22, 58, 92, 0.35);
+  box-shadow: 0 0 0 2px rgba(22, 58, 92, 0.08);
+}
+
+.manager-apps-page__search-icon {
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+.manager-apps-page__search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 0.82rem;
+  outline: none;
+  color: #1e293b;
+  min-width: 0;
+}
+
+.manager-apps-page__search input::placeholder {
+  color: #94a3b8;
+}
+
+.manager-apps-page__filter select {
+  appearance: none;
+  min-width: 160px;
+  min-height: 40px;
+  padding: 0 2rem 0 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #fff
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")
+    no-repeat right 12px center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.manager-apps-page__filter select:hover {
+  border-color: #cbd5e1;
+}
+
+.manager-apps-page__filter select:focus {
+  outline: 2px solid rgba(22, 58, 92, 0.25);
+  outline-offset: 1px;
+}

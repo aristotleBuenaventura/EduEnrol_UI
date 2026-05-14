@@ -19,6 +19,8 @@ import SltHomePage from './pages/slt/SltHomePage.jsx'
 import SltSectionPlaceholder from './pages/slt/SltSectionPlaceholder.jsx'
 import ManagerLayout from './pages/manager/ManagerLayout.jsx'
 import ManagerHomePage from './pages/manager/ManagerHomePage.jsx'
+import ManagerApplicationsPage from './pages/manager/ManagerApplicationsPage.jsx'
+import ManagerTaskQueuePage from './pages/manager/ManagerTaskQueuePage.jsx'
 import ManagerSectionPlaceholder from './pages/manager/ManagerSectionPlaceholder.jsx'
 
 function App() {
@@ -43,8 +45,8 @@ function App() {
       <Route path="/manager" element={<ManagerLayout />}>
         <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="dashboard" element={<ManagerHomePage />} />
-        <Route path="applications" element={<ManagerSectionPlaceholder />} />
-        <Route path="task-queue" element={<ManagerSectionPlaceholder />} />
+        <Route path="applications" element={<ManagerApplicationsPage />} />
+        <Route path="task-queue" element={<ManagerTaskQueuePage />} />
         <Route path="assignments" element={<ManagerSectionPlaceholder />} />
         <Route path="reports" element={<ManagerSectionPlaceholder />} />
       </Route>

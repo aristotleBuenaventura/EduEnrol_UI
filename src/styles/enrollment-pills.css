@@ -26,9 +26,19 @@
   color: #c2410c;
 }
 
+.enrollment-status-pill--sltReview {
+  background: #fef9c3;
+  color: #a16207;
+}
+
 .enrollment-status-pill--interviewScheduled {
   background: #ede9fe;
   color: #6d28d9;
+}
+
+.enrollment-status-pill--decisionPending {
+  background: #ffedd5;
+  color: #9a3412;
 }
 
 .enrollment-status-pill--approved {
@@ -37,8 +47,8 @@
 }
 
 .enrollment-status-pill--waitlisted {
-  background: #fef3c7;
-  color: #b45309;
+  background: #faf0e6;
+  color: #92400e;
 }
 
 .enrollment-status-pill--declined {

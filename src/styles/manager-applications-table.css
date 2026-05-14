@@ -1,0 +1,84 @@
+/* Manager Applications tab — card + table chrome (table cells reuse manager-application-table.css) */
+
+.manager-apps-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 20px 22px 18px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.manager-apps-card:hover {
+  transform: translateY(-2px);
+  border-color: #d8dee5;
+  box-shadow: 0 8px 22px rgba(17, 24, 39, 0.08);
+}
+
+.manager-apps-card__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.manager-apps-card__doc-icon {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 10px;
+  background: #eff4fb;
+  color: #163a5c;
+  flex-shrink: 0;
+}
+
+.manager-apps-card__title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.manager-apps-card__scroll {
+  overflow-x: auto;
+  margin: 12px -4px 0;
+  padding: 0 4px;
+}
+
+.manager-apps-card__table {
+  min-width: 720px;
+}
+
+.manager-apps-card__date {
+  font-size: 0.8rem;
+  color: #475569;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.manager-apps-card__empty {
+  margin: 0;
+  padding: 1.25rem 0.5rem;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.88rem;
+}
+
+.manager-apps-card__view-icon {
+  display: inline-grid;
+  place-items: center;
+  padding: 0.35rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.manager-apps-card__view-icon:hover {
+  background: #f1f5f9;
+  color: #163a5c;
+}
