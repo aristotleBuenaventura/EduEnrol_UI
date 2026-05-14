@@ -1,0 +1,67 @@
+/* SLT member cards on Manager Assignments tab */
+
+.manager-assign-slt-card {
+  flex: 1;
+  min-width: min(100%, 240px);
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 18px 20px 20px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.manager-assign-slt-card:hover {
+  transform: translateY(-2px);
+  border-color: #d8dee5;
+  box-shadow: 0 8px 22px rgba(17, 24, 39, 0.08);
+}
+
+.manager-assign-slt-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.manager-assign-slt-card__avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: #e8eef5;
+  color: #163a5c;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.manager-assign-slt-card__name {
+  margin: 0;
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.manager-assign-slt-card__active {
+  margin: 10px 0 8px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.manager-assign-slt-card__track {
+  height: 8px;
+  border-radius: 999px;
+  background: #eceff3;
+  overflow: hidden;
+}
+
+.manager-assign-slt-card__fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #163a5c;
+  transition: width 0.35s ease;
+}

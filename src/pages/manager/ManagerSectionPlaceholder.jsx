@@ -1,7 +1,6 @@
 import { useLocation } from 'react-router-dom'
 
 const TITLE_BY_PATH = {
-  '/manager/assignments': 'Assignments',
   '/manager/reports': 'Reports',
 }
 

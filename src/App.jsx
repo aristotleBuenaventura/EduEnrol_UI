@@ -21,6 +21,7 @@ import ManagerLayout from './pages/manager/ManagerLayout.jsx'
 import ManagerHomePage from './pages/manager/ManagerHomePage.jsx'
 import ManagerApplicationsPage from './pages/manager/ManagerApplicationsPage.jsx'
 import ManagerTaskQueuePage from './pages/manager/ManagerTaskQueuePage.jsx'
+import ManagerAssignmentsPage from './pages/manager/ManagerAssignmentsPage.jsx'
 import ManagerSectionPlaceholder from './pages/manager/ManagerSectionPlaceholder.jsx'
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
         <Route path="dashboard" element={<ManagerHomePage />} />
         <Route path="applications" element={<ManagerApplicationsPage />} />
         <Route path="task-queue" element={<ManagerTaskQueuePage />} />
-        <Route path="assignments" element={<ManagerSectionPlaceholder />} />
+        <Route path="assignments" element={<ManagerAssignmentsPage />} />
         <Route path="reports" element={<ManagerSectionPlaceholder />} />
       </Route>
       <Route path="/admin" element={<AdminLayout />}>
