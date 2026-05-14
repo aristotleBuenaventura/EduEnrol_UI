@@ -4,10 +4,12 @@ import AppToast from '../../components/ui/AppToast.jsx'
 import PanelEmptyState from '../../components/ui/PanelEmptyState.jsx'
 import SltApplicationReviewDetail from '../../components/slt/SltApplicationReviewDetail.jsx'
 import ScheduleInterviewModal from '../../components/slt/ScheduleInterviewModal.jsx'
+import RequestAdditionalInfoModal from '../../components/slt/RequestAdditionalInfoModal.jsx'
 import SltResolvedApplicationCard from '../../components/slt/SltResolvedApplicationCard.jsx'
 import SltReviewQueueListItem from '../../components/slt/SltReviewQueueListItem.jsx'
 import { IconDocument } from '../../components/icons/NavIcons.jsx'
 import { sltReviewQueueInitialItems } from '../../data/sltReviewQueueDummy.js'
+import { buildRequestInfoEmailBody, caregiverFirstName } from '../../data/requestAdditionalInfoEmailTemplate.js'
 import '../../styles/enrollment-pills.css'
 import '../../styles/panel-empty-state.css'
 import '../../styles/slt-review-queue-page.css'
@@ -27,6 +29,7 @@ function SltReviewQueuePage() {
   const [selectedId, setSelectedId] = useState(null)
   const [lastResolved, setLastResolved] = useState(null)
   const [scheduleModalItemId, setScheduleModalItemId] = useState(null)
+  const [requestInfoModalItemId, setRequestInfoModalItemId] = useState(null)
   const [toast, setToast] = useState(null)
   const toastSeq = useRef(0)
 
@@ -51,6 +54,22 @@ function SltReviewQueuePage() {
     if (!effectiveSelectedId) return null
     return queue.find((i) => i.id === effectiveSelectedId) ?? null
   }, [queue, effectiveSelectedId])
+
+  const requestInfoModalPayload = useMemo(() => {
+    if (!requestInfoModalItemId) return null
+    const row = queue.find((i) => i.id === requestInfoModalItemId)
+    if (!row?.detail?.caregiver) return null
+    const first = caregiverFirstName(row.detail.caregiver.name)
+    return {
+      initialTo: row.detail.caregiver.email,
+      initialSubject: `Additional information required — Application ${row.applicationId}`,
+      initialMessage: buildRequestInfoEmailBody({
+        caregiverFirstName: first,
+        studentName: row.studentName,
+        applicationId: row.applicationId,
+      }),
+    }
+  }, [queue, requestInfoModalItemId])
 
   const removeFromQueue = useCallback((id) => {
     setQueue((q) => q.filter((x) => x.id !== id))
@@ -116,11 +135,24 @@ function SltReviewQueuePage() {
   }, [pushToast, scheduleModalItemId])
 
   const handleRequestInfo = useCallback(() => {
-    pushToast({
-      title: 'Information request recorded',
-      description: 'The school office will be notified.',
-    })
-  }, [pushToast])
+    if (!selectedItem) return
+    setRequestInfoModalItemId(selectedItem.id)
+  }, [selectedItem])
+
+  const closeRequestInfoModal = useCallback(() => {
+    setRequestInfoModalItemId(null)
+  }, [])
+
+  const handleSendRequestInfo = useCallback(
+    ({ to }) => {
+      setRequestInfoModalItemId(null)
+      pushToast({
+        title: 'Email sent to caregiver',
+        description: `Sent to ${to}`,
+      })
+    },
+    [pushToast],
+  )
 
   const closeScheduleModal = useCallback(() => {
     setScheduleModalItemId(null)
@@ -147,6 +179,7 @@ function SltReviewQueuePage() {
                   selected={item.id === effectiveSelectedId}
                   onSelect={() => {
                     setScheduleModalItemId((mid) => (mid != null && item.id !== mid ? null : mid))
+                    setRequestInfoModalItemId((rid) => (rid != null && item.id !== rid ? null : rid))
                     setSelectedId(item.id)
                   }}
                 />
@@ -195,6 +228,17 @@ function SltReviewQueuePage() {
         onClose={closeScheduleModal}
         onConfirm={handleConfirmScheduleInterview}
       />
+
+      {requestInfoModalItemId != null && requestInfoModalPayload != null ? (
+        <RequestAdditionalInfoModal
+          key={requestInfoModalItemId}
+          onClose={closeRequestInfoModal}
+          initialTo={requestInfoModalPayload.initialTo}
+          initialSubject={requestInfoModalPayload.initialSubject}
+          initialMessage={requestInfoModalPayload.initialMessage}
+          onSend={handleSendRequestInfo}
+        />
+      ) : null}
 
       {toast ? (
         <AppToast
