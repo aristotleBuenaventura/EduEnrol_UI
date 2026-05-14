@@ -7,12 +7,14 @@ import { IconBell, IconSearch } from '../icons/NavIcons.jsx'
  * @param {string} [props.searchQuery]
  * @param {(value: string) => void} [props.onSearchChange]
  * @param {number} [props.notificationCount]
+ * @param {'danger' | 'accent'} [props.notificationBadgeTone]
  */
 function AppTopBar({
   searchPlaceholder = 'Search…',
   searchQuery = '',
   onSearchChange,
   notificationCount = 0,
+  notificationBadgeTone = 'danger',
 }) {
   const [language, setLanguage] = useState('en')
 
@@ -73,7 +75,16 @@ function AppTopBar({
         <button type="button" className="app-topbar__icon-btn" aria-label="Notifications">
           <IconBell width={22} height={22} />
           {notificationCount > 0 ? (
-            <span className="app-topbar__badge">{notificationCount > 9 ? '9+' : notificationCount}</span>
+            <span
+              className={[
+                'app-topbar__badge',
+                notificationBadgeTone === 'accent' ? 'app-topbar__badge--accent' : '',
+              ]
+                .filter(Boolean)
+                .join(' ')}
+            >
+              {notificationCount > 9 ? '9+' : notificationCount}
+            </span>
           ) : null}
         </button>
       </div>

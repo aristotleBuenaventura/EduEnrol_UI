@@ -483,6 +483,11 @@
   place-items: center;
 }
 
+.app-topbar__badge--accent {
+  background: #e6a317;
+  color: #1a1a1a;
+}
+
 @media (max-width: 720px) {
   .app-topbar__search {
     flex: 1 1 auto;

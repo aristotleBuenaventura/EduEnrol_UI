@@ -1,8 +1,12 @@
 import {
+  IconBarChart,
   IconBell,
+  IconCalendar,
+  IconClipboard,
   IconDashboard,
   IconDocument,
   IconGradCap,
+  IconHome,
   IconSchool,
   IconSettings,
   IconShield,
@@ -12,9 +16,13 @@ import {
 
 const byName = {
   dashboard: IconDashboard,
+  home: IconHome,
   gradCap: IconGradCap,
   document: IconDocument,
   bell: IconBell,
+  clipboard: IconClipboard,
+  calendar: IconCalendar,
+  chartBar: IconBarChart,
   workflow: IconWorkflow,
   school: IconSchool,
   shield: IconShield,

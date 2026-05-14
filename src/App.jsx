@@ -14,6 +14,9 @@ import AdminFormBuilderPage from './pages/admin/AdminFormBuilderPage.jsx'
 import AdminSettingsPage from './pages/admin/AdminSettingsPage.jsx'
 import AdminNotificationsPage from './pages/admin/AdminNotificationsPage.jsx'
 import AdminRegisterSchoolPage from './pages/admin/AdminRegisterSchoolPage.jsx'
+import SltLayout from './pages/slt/SltLayout.jsx'
+import SltHomePage from './pages/slt/SltHomePage.jsx'
+import SltSectionPlaceholder from './pages/slt/SltSectionPlaceholder.jsx'
 
 function App() {
   return (
@@ -26,6 +29,13 @@ function App() {
         <Route path="enrol-student" element={<ParentEnrolStudentPage />} />
         <Route path="applications" element={<ParentSectionPlaceholder />} />
         <Route path="notifications" element={<ParentSectionPlaceholder />} />
+      </Route>
+      <Route path="/slt" element={<SltLayout />}>
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<SltHomePage />} />
+        <Route path="review-queue" element={<SltSectionPlaceholder />} />
+        <Route path="interviews" element={<SltSectionPlaceholder />} />
+        <Route path="reports" element={<SltSectionPlaceholder />} />
       </Route>
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<Navigate to="dashboard" replace />} />

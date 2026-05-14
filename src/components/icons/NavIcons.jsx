@@ -233,3 +233,47 @@ export function IconWarning(props) {
   )
 }
 
+export function IconHome(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1V10.5Z" />
+    </svg>
+  )
+}
+
+export function IconClipboard(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <path d="M9 3h6l1 2h3a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h3l1-2Z" />
+      <path d="M9 8h6M9 12h6M9 16h4" />
+    </svg>
+  )
+}
+
+export function IconBarChart(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <path d="M4 20h16" />
+      <path d="M7 20V12M12 20V8M17 20v-7" />
+    </svg>
+  )
+}
+
+export function IconEye(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12Z" />
+      <circle cx="12" cy="12" r="2.5" />
+    </svg>
+  )
+}
+
+export function IconCheckCircle(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M8.5 12.2 11 14.7 15.5 9.2" />
+    </svg>
+  )
+}
+
