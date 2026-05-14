@@ -146,6 +146,41 @@ export function IconInfo(props) {
   )
 }
 
+export function IconUser(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <circle cx="12" cy="8" r="3.5" />
+      <path d="M5 20c0-3.5 3.2-6.5 7-6.5s7 3 7 6.5" />
+    </svg>
+  )
+}
+
+export function IconMapPin(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <path d="M12 21s7-4.35 7-10a7 7 0 1 0-14 0c0 5.65 7 10 7 10Z" />
+      <circle cx="12" cy="11" r="2" />
+    </svg>
+  )
+}
+
+export function IconMail(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3 7 9 6 9-6" />
+    </svg>
+  )
+}
+
+export function IconPhone(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <path d="M6.5 3h3l1.5 4-2 1.2a12 12 0 0 0 5.8 5.8L17 12l4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 3 5.2 2 2 0 0 1 5 3Z" />
+    </svg>
+  )
+}
+
 export function IconFileStack(props) {
   return (
     <svg {...iconProps} {...props}>

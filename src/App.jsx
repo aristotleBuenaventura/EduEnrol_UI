@@ -16,6 +16,7 @@ import AdminNotificationsPage from './pages/admin/AdminNotificationsPage.jsx'
 import AdminRegisterSchoolPage from './pages/admin/AdminRegisterSchoolPage.jsx'
 import SltLayout from './pages/slt/SltLayout.jsx'
 import SltHomePage from './pages/slt/SltHomePage.jsx'
+import SltReviewQueuePage from './pages/slt/SltReviewQueuePage.jsx'
 import SltSectionPlaceholder from './pages/slt/SltSectionPlaceholder.jsx'
 import ManagerLayout from './pages/manager/ManagerLayout.jsx'
 import ManagerHomePage from './pages/manager/ManagerHomePage.jsx'
@@ -39,7 +40,7 @@ function App() {
       <Route path="/slt" element={<SltLayout />}>
         <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="dashboard" element={<SltHomePage />} />
-        <Route path="review-queue" element={<SltSectionPlaceholder />} />
+        <Route path="review-queue" element={<SltReviewQueuePage />} />
         <Route path="interviews" element={<SltSectionPlaceholder />} />
         <Route path="reports" element={<SltSectionPlaceholder />} />
       </Route>
