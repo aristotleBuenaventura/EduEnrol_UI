@@ -8,6 +8,7 @@ import { IconBell, IconSearch } from '../icons/NavIcons.jsx'
  * @param {(value: string) => void} [props.onSearchChange]
  * @param {number} [props.notificationCount]
  * @param {'danger' | 'accent'} [props.notificationBadgeTone]
+ * @param {string} [props.demoTag] — e.g. "Demo: Manager" (green pill before notifications)
  */
 function AppTopBar({
   searchPlaceholder = 'Search…',
@@ -15,6 +16,7 @@ function AppTopBar({
   onSearchChange,
   notificationCount = 0,
   notificationBadgeTone = 'danger',
+  demoTag,
 }) {
   const [language, setLanguage] = useState('en')
 
@@ -72,6 +74,11 @@ function AppTopBar({
             Te Reo
           </button>
         </div>
+        {demoTag ? (
+          <span className="app-topbar__demo-pill" title="Demo mode">
+            {demoTag}
+          </span>
+        ) : null}
         <button type="button" className="app-topbar__icon-btn" aria-label="Notifications">
           <IconBell width={22} height={22} />
           {notificationCount > 0 ? (

@@ -10,6 +10,7 @@ import {
   IconSchool,
   IconSettings,
   IconShield,
+  IconUserPlus,
   IconUsers,
   IconWorkflow,
 } from './NavIcons.jsx'
@@ -27,6 +28,7 @@ const byName = {
   school: IconSchool,
   shield: IconShield,
   users: IconUsers,
+  userPlus: IconUserPlus,
   settings: IconSettings,
 }
 

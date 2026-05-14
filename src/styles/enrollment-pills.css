@@ -1,0 +1,83 @@
+/* Reusable status / priority pills — Manager application queue colour coding */
+
+.enrollment-status-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.enrollment-status-pill--draft {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.enrollment-status-pill--submitted {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.enrollment-status-pill--adminReview {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.enrollment-status-pill--interviewScheduled {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.enrollment-status-pill--approved {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.enrollment-status-pill--waitlisted {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.enrollment-status-pill--declined {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.enrollment-status-pill--unknown {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.enrollment-priority-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: lowercase;
+}
+
+.enrollment-priority-pill--normal {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.enrollment-priority-pill--high {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+.enrollment-priority-pill--low {
+  background: #e0f2fe;
+  color: #64748b;
+}
+
+.enrollment-priority-pill--unknown {
+  background: #f3f4f6;
+  color: #6b7280;
+}

@@ -155,6 +155,9 @@ function LoginPage() {
             <Button className="login-demo-button" onClick={() => navigate('/slt/dashboard')}>
               View SLT dashboard (demo)
             </Button>
+            <Button className="login-demo-button" onClick={() => navigate('/manager/dashboard')}>
+              View manager dashboard (demo)
+            </Button>
           </div>
         </Card>
       </main>

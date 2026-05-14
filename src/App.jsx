@@ -17,6 +17,9 @@ import AdminRegisterSchoolPage from './pages/admin/AdminRegisterSchoolPage.jsx'
 import SltLayout from './pages/slt/SltLayout.jsx'
 import SltHomePage from './pages/slt/SltHomePage.jsx'
 import SltSectionPlaceholder from './pages/slt/SltSectionPlaceholder.jsx'
+import ManagerLayout from './pages/manager/ManagerLayout.jsx'
+import ManagerHomePage from './pages/manager/ManagerHomePage.jsx'
+import ManagerSectionPlaceholder from './pages/manager/ManagerSectionPlaceholder.jsx'
 
 function App() {
   return (
@@ -36,6 +39,14 @@ function App() {
         <Route path="review-queue" element={<SltSectionPlaceholder />} />
         <Route path="interviews" element={<SltSectionPlaceholder />} />
         <Route path="reports" element={<SltSectionPlaceholder />} />
+      </Route>
+      <Route path="/manager" element={<ManagerLayout />}>
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<ManagerHomePage />} />
+        <Route path="applications" element={<ManagerSectionPlaceholder />} />
+        <Route path="task-queue" element={<ManagerSectionPlaceholder />} />
+        <Route path="assignments" element={<ManagerSectionPlaceholder />} />
+        <Route path="reports" element={<ManagerSectionPlaceholder />} />
       </Route>
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<Navigate to="dashboard" replace />} />

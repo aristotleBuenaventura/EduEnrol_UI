@@ -77,6 +77,23 @@ export function IconChevronRight(props) {
   )
 }
 
+export function IconChevronDown(props) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 export function IconSearch(props) {
   return (
     <svg {...iconProps} {...props}>
@@ -273,6 +290,16 @@ export function IconCheckCircle(props) {
     <svg {...iconProps} {...props}>
       <circle cx="12" cy="12" r="9" />
       <path d="M8.5 12.2 11 14.7 15.5 9.2" />
+    </svg>
+  )
+}
+
+export function IconUserPlus(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M19 8v6M22 11h-6" />
     </svg>
   )
 }

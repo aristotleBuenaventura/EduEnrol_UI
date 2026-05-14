@@ -450,6 +450,20 @@
   color: #fff;
 }
 
+.app-topbar__demo-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid #bbf7d0;
+  background: #ecfdf5;
+  color: #166534;
+  font-size: 0.62rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 .app-topbar__icon-btn {
   position: relative;
   border: none;

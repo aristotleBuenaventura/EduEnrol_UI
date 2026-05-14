@@ -1,0 +1,125 @@
+.manager-kpi-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 18px 20px 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.manager-kpi-card:hover {
+  transform: translateY(-2px);
+  border-color: #d8dee5;
+  box-shadow: 0 8px 22px rgba(17, 24, 39, 0.08);
+}
+
+.manager-kpi-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.manager-kpi-card__title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.35;
+  max-width: 11rem;
+}
+
+.manager-kpi-card__icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: #eff4fb;
+  color: #566b83;
+  flex-shrink: 0;
+}
+
+.manager-kpi-card__value {
+  margin-top: 10px;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #111827;
+  line-height: 1;
+}
+
+.manager-kpi-card__hint {
+  margin: 6px 0 0;
+  font-size: 0.72rem;
+  color: #6b7280;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.slt-workload-card {
+  flex: 1;
+  min-width: min(100%, 240px);
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 20px 22px 22px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.slt-workload-card:hover {
+  transform: translateY(-2px);
+  border-color: #d8dee5;
+  box-shadow: 0 8px 22px rgba(17, 24, 39, 0.08);
+}
+
+.slt-workload-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.slt-workload-card__avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: #e8eef5;
+  color: #163a5c;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.slt-workload-card__name {
+  margin: 0;
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.slt-workload-card__email {
+  margin: 3px 0 0;
+  font-size: 0.72rem;
+  color: #6b7280;
+}
+
+.slt-workload-card__assignments {
+  margin: 14px 0 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.slt-workload-card__track {
+  height: 8px;
+  border-radius: 999px;
+  background: #eceff3;
+  overflow: hidden;
+}
+
+.slt-workload-card__fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #163a5c;
+  transition: width 0.35s ease;
+}
